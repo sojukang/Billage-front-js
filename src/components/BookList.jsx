@@ -42,16 +42,16 @@ function BookList() {
     if (loading) return <div>로딩중..</div>;
     if (error) return <div>에러가 발생했습니다</div>;
     if (!bookItems) return null;
+
     return (
         <div style={styles.divParent}>
             <div style={styles.div}>
                 {bookItems.map((book) => (
-                    <BookItem
+                    <BookItem key={book.id}
                         id={book.id}
                         nickname={book.nickname}
                         title={book.title}
                         imageUrl={book.imageUrl}
-                        detailMessage={book.detailMessage}
                         location={book.location}
                     />
                 ))}
