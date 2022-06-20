@@ -1,21 +1,7 @@
 import Header from "../components/Header";
-import BookItem from "../components/BookItem";
 import React from "react";
+import BookList from "../components/BookList";
 
-const books = [
-    {
-        test: 1
-    },
-    {
-        test: 2
-    },
-    {
-        test: 3
-    },
-    {
-        test: 4
-    }
-]
 
 const styles = {
     div: {
@@ -29,9 +15,7 @@ function Main() {
         <div>
             <Header name={""}/>
             <div style={styles.div}>
-            {books.map((book) => (
-                <BookItem key={book.test}/>
-            ))}
+                <BookList/>
             </div>
         </div>
     )
