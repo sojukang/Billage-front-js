@@ -13,3 +13,10 @@ export async function getBook(id) {
     );
     return response.data;
 }
+
+export async function getNaverBookSearch(title) {
+    const response = await axios.get(
+        `http://localhost:8080/api/naver/${title}`
+    );
+    return response.data;
+}
