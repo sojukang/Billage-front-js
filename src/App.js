@@ -5,6 +5,7 @@ import BookDetail from "./pages/BookDetail";
 import React from "react";
 import BookList from "./components/BookList";
 import BookSearch from "./pages/BookSearch";
+import BookRegister from "./pages/BookRegister";
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/books/" element={<BookList />} />}/>
                 <Route path="/books/detail" element={<BookDetail />}/>
                 <Route path="/books/search" element={<BookSearch />}/>
+                <Route path="/books/register" element={<BookRegister />}/>
             </Routes>
         </div>
     );
