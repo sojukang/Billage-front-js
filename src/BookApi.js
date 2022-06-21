@@ -20,3 +20,16 @@ export async function getNaverBookSearch(title) {
     );
     return response.data;
 }
+
+export async function postBookRegister(data) {
+    const response = await axios.post(
+        `http://localhost:8080/api/books`,
+        {data},
+        {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer `,
+            },
+        });
+    return response.data;
+}
