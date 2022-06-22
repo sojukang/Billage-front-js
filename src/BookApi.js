@@ -17,10 +17,10 @@ export async function getBook(id) {
 export async function postSignUp(body) {
     const response = await axios.post(
         `http://localhost:8080/api/members/`,
-         {
-             email: body.email,
-             nickname: body.nickname,
-             password: body.password
+        {
+            email: body.email,
+            nickname: body.nickname,
+            password: body.password
         }
     );
     return response;
@@ -52,6 +52,19 @@ export async function postBookRegister(data, token) {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "Authorization": `Bearer ${token}`,
+            },
+        });
+    return response.data;
+}
+
+export async function postRequestBorrowing(data) {
+    const response = await axios.post(
+        `http://localhost:8080/api/books/${data.id}`, {}
+        ,
+        {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer ${data.token}`,
             },
         });
     return response.data;
