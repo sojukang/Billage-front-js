@@ -12,6 +12,7 @@ const styles = {
 }
 
 function Header() {
+
     return (
         <div style={styles.div}>
             <div>
@@ -21,7 +22,9 @@ function Header() {
                 <Button id={"login"} style={styles.button}>로그인</Button>
             </div>
             <div>
+                <Link to={"/books/search"}>
                 <Button id={"bookRegister"} style={styles.button}>책 등록</Button>
+                </Link>
                 <Button id={"info"} style={styles.button}>내 정보</Button>
             </div>
         </div>

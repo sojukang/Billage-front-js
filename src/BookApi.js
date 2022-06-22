@@ -36,3 +36,23 @@ export async function postLogin(body) {
     );
     return response;
 }
+
+export async function getNaverBookSearch(title) {
+    const response = await axios.get(
+        `http://localhost:8080/api/naver/${title}`
+    );
+    return response.data;
+}
+
+export async function postBookRegister(data) {
+    const response = await axios.post(
+        `http://localhost:8080/api/books`,
+        {data},
+        {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer `,
+            },
+        });
+    return response.data;
+}
