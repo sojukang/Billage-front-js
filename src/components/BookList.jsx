@@ -48,11 +48,13 @@ function BookList() {
             <div style={styles.div}>
                 {bookItems.map((book) => (
                     <BookItem key={book.id}
-                        id={book.id}
-                        nickname={book.nickname}
-                        title={book.title}
-                        imageUrl={book.imageUrl}
-                        location={book.location}
+                              id={book.id}
+                              nickname={book.nickname}
+                              title={book.title}
+                              imageUrl={book.imageUrl}
+                              detailMessage={book.detailMessage}
+
+                              location={book.location}
                     />
                 ))}
             </div>

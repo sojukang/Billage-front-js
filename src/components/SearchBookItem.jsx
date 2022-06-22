@@ -7,8 +7,9 @@ const styles = {
         flexDirection: "row",
         flexWrap: "wrap",
         marginBottom: "20px",
-        marginTop: "20px"
+        marginTop: "20px",
     },
+
     button: {
         marginTop: "auto",
         marginLeft: "auto",
@@ -22,6 +23,7 @@ const styles = {
         marginLeft: "auto",
         marginRight: "auto",
         marginBottom: "auto",
+        width: "24em"
     }
 }
 
@@ -29,7 +31,11 @@ function SearchBookItem({imageUrl, title}) {
     return (
         <div style={styles.div}>
             <img src={imageUrl} alt={"hi"}/>
-            <p style={styles.title}>{title}</p>
+            <p style={styles.title}>
+                <div
+                    dangerouslySetInnerHTML={{__html: title}}
+                />
+            </p>
             <Link
                 to={"/books/register"}
                 state={{imageUrl: imageUrl, title: title}}

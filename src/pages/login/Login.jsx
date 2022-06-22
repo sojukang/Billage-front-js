@@ -1,8 +1,13 @@
 import UserForm from "../../components/common/userinput/UserForm";
-import {RegisterButtonContainer, RegisterInputContainer, RegisterLabel, RegisterPageContainer} from "../signup/styled";
+import {
+    RegisterButtonContainer,
+    RegisterInputContainer,
+    RegisterLabel,
+    RegisterPageContainer,
+    StyledButton
+} from "../signup/styled";
 import UserInput from "../../components/common/userinput/UserInput";
 import {RANGE, registerValidator} from "../../validator/Validator";
-import {Button} from "@material-ui/core";
 import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
@@ -94,30 +99,19 @@ function Login() {
                     />
                 </RegisterInputContainer>
                 <RegisterButtonContainer>
-                    <Button
-                        onClick={signIn}
-                        width="500px">
+                    <StyledButton
+                        onClick={signIn}>
                         로그인
-                    </Button>
+                    </StyledButton>
                     <Link to={"/signup"}>
-                        <Button
-                            type="button"
-                            width="500px"
-                            bgColor="#ffffff"
-                            textColor="#E7A0A0"
-                        >
+                        <StyledButton>
                             가입하기
-                        </Button>
+                        </StyledButton>
                     </Link>
                     <Link to={"/"}>
-                        <Button
-                            type="button"
-                            width="500px"
-                            bgColor="#ffffff"
-                            textColor="#E7A0A0"
-                        >
+                        <StyledButton>
                             홈으로
-                        </Button>
+                        </StyledButton>
                     </Link>
                 </RegisterButtonContainer>
             </UserForm>

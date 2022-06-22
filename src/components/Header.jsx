@@ -25,7 +25,7 @@ function Header() {
             </div>
             <div>
                 <Link to={"/books/search"}>
-                <Button id={"bookRegister"} style={styles.button}>책 등록</Button>
+                    <Button id={"bookRegister"} style={styles.button}>책 등록</Button>
                 </Link>
                 <Button id={"info"} style={styles.button}>내 정보</Button>
             </div>

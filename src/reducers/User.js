@@ -3,7 +3,7 @@ const initialState = {
 }
 
 export const LoginUser = (token) => {
-    return{
+    return {
         type: "LOGIN",
         token: token
     }

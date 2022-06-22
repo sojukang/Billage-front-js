@@ -1,15 +1,18 @@
-import {useEffect, useState} from "react";
-import {useDispatch} from "react-redux";
+import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 
-import {RegisterButtonContainer, RegisterInputContainer, RegisterLabel, RegisterPageContainer,} from "./styled";
+import {
+    RegisterButtonContainer,
+    RegisterInputContainer,
+    RegisterLabel,
+    RegisterPageContainer,
+    StyledButton,
+} from "./styled";
 import {useInputHandler} from "../UserInputHandler";
 import {RANGE, registerValidator} from "../../validator/Validator";
 import UserForm from "../../components/common/userinput/UserForm";
 import UserInput from "../../components/common/userinput/UserInput";
 import {postSignUp} from "../../BookApi";
-import {Button} from "@material-ui/core";
-import {theme} from "../../style";
 
 const initialUserInfo = {
     email: "",
@@ -134,28 +137,18 @@ function SignUp() {
                     />
                 </RegisterInputContainer>
                 <RegisterButtonContainer>
-                    <Button type="submit" width="500px">
+                    <StyledButton type="submit">
                         가입하기
-                    </Button>
+                    </StyledButton>
                     <Link to={"/login"}>
-                        <Button
-                            type="button"
-                            width="500px"
-                            bgColor={theme.color.main}
-                            textColor={theme.color.point}
-                        >
+                        <StyledButton>
                             로그인
-                        </Button>
+                        </StyledButton>
                     </Link>
                     <Link to={"/"}>
-                        <Button
-                            type="button"
-                            width="500px"
-                            bgColor="#ffffff"
-                            textColor="#E7A0A0"
-                        >
+                        <StyledButton>
                             홈으로
-                        </Button>
+                        </StyledButton>
                     </Link>
                 </RegisterButtonContainer>
             </UserForm>

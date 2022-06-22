@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import React from "react";
 import BookList from "../components/BookList";
+import {ContentsBox} from "./ContentsBox";
 
 
 const styles = {
@@ -14,9 +15,11 @@ function Main() {
     return (
         <div>
             <Header name={""}/>
-            <div style={styles.div}>
-                <BookList/>
-            </div>
+            <ContentsBox>
+                <div style={styles.div}>
+                    <BookList/>
+                </div>
+            </ContentsBox>
         </div>
     )
 }
