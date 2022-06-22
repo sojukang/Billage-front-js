@@ -28,7 +28,7 @@ export async function postSignUp(body) {
 
 export async function postLogin(body) {
     const response = await axios.post(
-        `http://localhost:8080/auth/login`,
+        `http://localhost:8080/api/auth/login`,
         {
             email: body.email,
             password: body.password
