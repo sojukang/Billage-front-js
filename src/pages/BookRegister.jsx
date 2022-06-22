@@ -1,8 +1,9 @@
 import Input from "../components/common/Input";
 import Button from "../components/common/Button";
-import {useLocation} from 'react-router-dom';
-import {useState} from "react";
+import {useLocation, useNavigate} from 'react-router-dom';
+import React, {useState} from "react";
 import {postBookRegister} from "../BookApi";
+import {useSelector} from "react-redux";
 
 const styles = {
     div: {
@@ -25,10 +26,13 @@ const styles = {
 
 function BookRegister() {
     const {state} = useLocation();
+    const navigate = useNavigate();
     const imageUrl = state.imageUrl;
     const title = state.title;
     const [location, setLocation] = useState('');
     const [detailMessage, setDetailMessage] = useState('');
+    const user = useSelector(state => state);
+
 
     const onChangeHandleLocation = (e) => {
         setLocation(e.target.value);
@@ -39,13 +43,21 @@ function BookRegister() {
     }
 
     const postRegister = async () => {
+        if (!user.token) {
+            alert("로그인이 필요합니다.")
+            navigate("/login")
+        }
         const data = {
             title: title,
             imageUrl: imageUrl,
             detailMessage: detailMessage,
             location: location
         }
-        await postBookRegister(data);
+        await postBookRegister(data, user.token).then(() => {
+            alert("책 등록 완료됐습니다.");
+            navigate("/");
+        })
+
     }
 
     return (

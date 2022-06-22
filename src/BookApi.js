@@ -44,14 +44,14 @@ export async function getNaverBookSearch(title) {
     return response.data;
 }
 
-export async function postBookRegister(data) {
+export async function postBookRegister(data, token) {
     const response = await axios.post(
         `http://localhost:8080/api/books`,
-        {data},
+        data,
         {
             headers: {
                 "Access-Control-Allow-Origin": "*",
-                "Authorization": `Bearer `,
+                "Authorization": `Bearer ${token}`,
             },
         });
     return response.data;
