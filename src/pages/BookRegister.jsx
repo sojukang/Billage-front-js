@@ -1,8 +1,8 @@
 import Input from "../components/common/Input";
 import Button from "../components/common/Button";
 import {useLocation, useNavigate} from 'react-router-dom';
-import React, {useEffect, useState} from "react";
-import {getBook, postBookRegister} from "../BookApi";
+import React, {useState} from "react";
+import {postBookRegister} from "../BookApi";
 import {useSelector} from "react-redux";
 
 const styles = {
@@ -53,13 +53,10 @@ function BookRegister() {
             detailMessage: detailMessage,
             location: location
         }
-        await postBookRegister(data, user.token).then((res) => {
+        await postBookRegister(data, user.token).then(() => {
             alert("책 등록 완료됐습니다.");
             navigate("/");
-        }).catch((error) => {
-            const responseData = error.response.data;
-            alert(responseData);
-        });
+        })
 
     }
 
