@@ -14,6 +14,29 @@ export async function getBook(id) {
     return response.data;
 }
 
+export async function postSignUp(body) {
+    const response = await axios.post(
+        `http://localhost:8080/api/members/`,
+         {
+             email: body.email,
+             nickname: body.nickname,
+             password: body.password
+        }
+    );
+    return response;
+}
+
+export async function postLogin(body) {
+    const response = await axios.post(
+        `http://localhost:8080/auth/login`,
+        {
+            email: body.email,
+            password: body.password
+        }
+    );
+    return response;
+}
+
 export async function getNaverBookSearch(title) {
     const response = await axios.get(
         `http://localhost:8080/api/naver/${title}`
