@@ -147,6 +147,16 @@ function SignUp() {
                             로그인
                         </Button>
                     </Link>
+                    <Link to={"/"}>
+                        <Button
+                            type="button"
+                            width="500px"
+                            bgColor="#ffffff"
+                            textColor="#E7A0A0"
+                        >
+                            홈으로
+                        </Button>
+                    </Link>
                 </RegisterButtonContainer>
             </UserForm>
         </RegisterPageContainer>
