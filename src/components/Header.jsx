@@ -16,10 +16,12 @@ function Header() {
     return (
         <div style={styles.div}>
             <div>
-                <Link to="signup">
+                <Link to="/signup">
                     <Button id={"register"} style={styles.button}>회원가입</Button>
                 </Link>
-                <Button id={"login"} style={styles.button}>로그인</Button>
+                <Link to="/login">
+                    <Button id={"login"} style={styles.button}>로그인</Button>
+                </Link>
             </div>
             <div>
                 <Link to={"/books/search"}>
