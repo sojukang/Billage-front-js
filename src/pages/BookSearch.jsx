@@ -10,8 +10,8 @@ const styles = {
         flexDirection: "row",
         flexWrap: "wrap",
         marginTop: "30px",
-        marginLeft:"auto",
-        marginRight:"auto",
+        marginLeft: "auto",
+        marginRight: "auto",
         marginBottom: "auto",
     },
     divParent: {
@@ -60,9 +60,9 @@ function BookSearch() {
                     검색</Button>
             </div>
             <div style={styles.bookItems}>
-            {bookItems.map((book) => (
-                <SearchBookItem imageUrl={book.image} title={book.title}/>
-            ))}
+                {bookItems.map((book) => (
+                    <SearchBookItem imageUrl={book.image} title={book.title}/>
+                ))}
             </div>
         </div>
     )

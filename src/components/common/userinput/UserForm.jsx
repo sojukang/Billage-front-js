@@ -7,7 +7,7 @@ export const Form = styled.form`
   padding: 48px 16px;
 `;
 
-function UserForm({ children, onSubmit }) {
+function UserForm({children, onSubmit}) {
     return <Form onSubmit={onSubmit}>{children}</Form>;
 }
 

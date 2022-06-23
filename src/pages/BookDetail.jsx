@@ -2,9 +2,16 @@ import React, {useEffect, useState} from "react";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import BookItem from "../components/BookItem";
 import {getBook, postRequestBorrowing} from "../BookApi";
-import {Button} from "@material-ui/core";
+import {Button, withStyles} from "@material-ui/core";
 import UserInput from "../components/common/userinput/UserInput";
 import {useSelector} from "react-redux";
+
+export const StyledButton = withStyles({
+    root: {
+        width: "24rem",
+        backgroundColor: "#efd7d7"
+    },
+})(Button);
 
 function BookDetail() {
     const user = useSelector(state => state)
@@ -21,7 +28,7 @@ function BookDetail() {
         navigate(path);
     }
 
-    const toLogin= () => {
+    const toLogin = () => {
         const path = "/login";
         navigate(path);
     }
@@ -67,7 +74,7 @@ function BookDetail() {
     if (!bookItem) return null;
 
     return (
-        <div>
+        <div align="center">
             <BookItem
                 id={id}
                 title={bookItem.title}
@@ -79,13 +86,16 @@ function BookDetail() {
             <div>
                 <UserInput
                     type="borrowingMessage"
-                    width="300px"
+                    width="22em"
                     placeholder="주인에게 보낼 메시지👍"
                     name="borrowingMessage"
                 />
-                <Button onClick={() => requestBorrowing(id, user)}>
+                <StyledButton
+                    onClick={() => requestBorrowing(id, user)}
+                    width="24rem"
+                >
                     빌림 요청
-                </Button>
+                </StyledButton>
             </div>
         </div>
     )

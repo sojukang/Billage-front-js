@@ -1,4 +1,14 @@
 import styled from "styled-components";
+import {Button, withStyles} from "@material-ui/core";
+
+export const StyledButton = withStyles({
+    root: {
+        width: "40rem",
+        backgroundColor: "#efd7d7",
+        color: "#494848",
+        fontWeight: "bold"
+    },
+})(Button);
 
 export const RegisterPageContainer = styled.section`
   display: flex;

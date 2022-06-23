@@ -9,7 +9,8 @@ const styles = {
     div: {
         height: "100vh",
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
+        marginBottom: "10vh"
     },
     divChild: {
         marginLeft: "auto",
@@ -17,7 +18,8 @@ const styles = {
     },
     input: {
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
+        marginBottom: "2vh"
     },
     button: {
         backgroundColor: "gray"
@@ -64,7 +66,9 @@ function BookRegister() {
         <div style={styles.div}>
             <div style={styles.divChild}>
                 <img src={imageUrl} alt={"hi"}/>
-                <p>{title}</p>
+                <p>
+                    {title.replace(/<[^>]*>?/g, '')}
+                </p>
                 <Input
                     style={styles.input}
                     placeholder={"책 위치"}
@@ -75,7 +79,6 @@ function BookRegister() {
                     placeholder={"상세 메시지"}
                     onChange={onChangeHandleDetailMessage}
                 />
-                <hr/>
                 <Button
                     style={styles.button}
                     onClick={postRegister}

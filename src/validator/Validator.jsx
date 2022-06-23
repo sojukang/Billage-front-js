@@ -1,4 +1,3 @@
-
 export const RANGE = {
     EMAIL_MAX_LENGTH: 50,
     EMAIL_MIN_LENGTH: 8,
