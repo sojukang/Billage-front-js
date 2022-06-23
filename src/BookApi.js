@@ -57,7 +57,7 @@ export async function postBookRegister(data, token) {
     return response.data;
 }
 
-export async function postRequestBorrowing(data) {
+export async function postRequestRent(data) {
     const response = await axios.post(
         `http://localhost:8080/api/books/${data.id}`, {}
         ,
@@ -65,6 +65,18 @@ export async function postRequestBorrowing(data) {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "Authorization": `Bearer ${data.token}`,
+            },
+        });
+    return response.data;
+}
+
+export async function getBooksByUser(token) {
+    const response = await axios.get(
+        `http://localhost:8080/api/books/me`,
+        {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer ${token}`,
             },
         });
     return response.data;

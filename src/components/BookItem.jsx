@@ -20,14 +20,13 @@ const styles = {
     },
 }
 
-const BookContainer = styled.div`
+export const BookContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 20rem;
+  width: 23rem;
   height: 24rem;
-  padding: 2em;
+  padding: 2em 0.5em 2em 0.5em;
   border: 1px solid #dddddd;
-  //border: none;
   border-radius: 8px;
 
   cursor: pointer;
@@ -38,7 +37,7 @@ const BookContainer = styled.div`
   }
 `;
 
-const BookInfos = styled.p`
+export const BookInfos = styled.p`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

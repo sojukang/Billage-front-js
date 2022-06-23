@@ -39,7 +39,9 @@ function Header() {
                 <Link to={"/books/search"}>
                     <Button id={"bookRegister"} style={styles.button}>책 등록</Button>
                 </Link>
-                <Button id={"info"} style={styles.button}>내 정보</Button>
+                <Link to={"/me"}>
+                    <Button id={"info"} style={styles.button}>내 정보</Button>
+                </Link>
             </div>
         </div>
     )
