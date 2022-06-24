@@ -6,6 +6,7 @@ import {postBookRegister} from "../BookApi";
 import {useSelector} from "react-redux";
 import {ContentsBox} from "./ContentsBox";
 import Header from "../components/Header";
+import {SelectButton} from "./BookSearch";
 
 const styles = {
     div: {
@@ -84,10 +85,9 @@ function BookRegister() {
                             placeholder={"상세 메시지"}
                             onChange={onChangeHandleDetailMessage}
                         />
-                        <Button
-                            style={styles.button}
+                        <SelectButton
                             onClick={postRegister}
-                        >등록</Button>
+                        >등록</SelectButton>
                     </div>
                 </div>
             </ContentsBox>
