@@ -1,28 +1,48 @@
-import Input from "../components/common/Input";
-import Button from "../components/common/Button";
 import React, {useState} from "react";
 import {getNaverBookSearch} from "../BookApi";
 import SearchBookItem from "../components/SearchBookItem";
-import {ContentsBox} from "./ContentsBox";
 import Header from "../components/Header";
+import UserInput from "../components/common/userinput/UserInput";
+import styled from "styled-components";
+import {Button, withStyles} from "@material-ui/core";
+
+const SearchBox = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  margin: 0.3rem auto 1rem auto;
+  padding-top: 2rem;
+  border-top: 1px solid #dddddd;
+`;
+
+export const SearchButton = withStyles({
+    root: {
+        marginLeft: "2rem",
+        width: "7rem",
+        height: "3rem",
+        backgroundColor: "#efd7d7",
+    },
+})(Button);
+
+export const SelectButton = withStyles({
+    root: {
+        width: "5rem",
+        height: "3rem",
+        backgroundColor: "#efd7d7",
+    },
+})(Button);
 
 const styles = {
     div: {
-        display: "flex",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        marginTop: "30px",
-        marginLeft: "auto",
-        marginRight: "auto",
-        marginBottom: "auto",
-    },
-    divParent: {
-        display: "table",
-        marginLeft: "auto",
-        marginRight: "auto"
+        height: "5rem",
     },
 
     bookItems: {
+        display: "table",
+        marginLeft: "auto",
+        marginRight: "auto",
         flexDirection: "row",
         flexWrap: "wrap",
     },
@@ -52,25 +72,28 @@ function BookSearch() {
     return (
         <>
             <Header/>
-            <ContentsBox>
-                <div style={styles.divParent}>
-                    <div style={styles.div}>
-                        <Input
-                            style={styles.input}
-                            onChange={onChangeSearchTitle}
-                        >책 이름</Input>
-                        <Button
-                            onClick={fetchSearchBooks}
-                            style={styles.button}>
-                            검색</Button>
-                    </div>
-                    <div style={styles.bookItems}>
-                        {bookItems.map((book) => (
-                            <SearchBookItem imageUrl={book.image} title={book.title}/>
-                        ))}
-                    </div>
+            <SearchBox>
+                <UserInput
+                    type="title"
+                    minLength="2"
+                    width="23rem"
+                    placeholder="책 제목을 입력해주세요👍"
+                    name="title"
+                    required
+                    onChange={onChangeSearchTitle}
+                />
+                <div style={styles.div}>
+                    <SearchButton
+                        onClick={fetchSearchBooks}>
+                        검색하기🔍
+                    </SearchButton>
                 </div>
-            </ContentsBox>
+            </SearchBox>
+            <div style={styles.bookItems}>
+                {bookItems.map((book) => (
+                    <SearchBookItem imageUrl={book.image} title={book.title}/>
+                ))}
+            </div>
         </>
     )
 }

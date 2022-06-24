@@ -1,5 +1,6 @@
 import Button from "./common/Button";
 import {Link} from "react-router-dom";
+import {SelectButton} from "../pages/BookSearch";
 
 const styles = {
     div: {
@@ -40,9 +41,8 @@ function SearchBookItem({imageUrl, title}) {
                 to={"/books/register"}
                 state={{imageUrl: imageUrl, title: title}}
             >
-                <Button
-                    style={styles.button}
-                >선택하기</Button>
+                <SelectButton
+                >선택하기</SelectButton>
             </Link>
         </div>
     )

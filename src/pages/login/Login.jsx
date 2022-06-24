@@ -75,12 +75,11 @@ function Login() {
                 <RegisterPageContainer>
                     <UserForm>
                         <RegisterInputContainer>
-                            <RegisterLabel>이메일</RegisterLabel>
                             <UserInput
                                 type="email"
                                 minLength={RANGE.EMAIL_MIN_LENGTH}
                                 maxLength={RANGE.EMAIL_MAX_LENGTH}
-                                width="500px"
+                                width="38rem"
                                 placeholder="이메일을 입력해주세요"
                                 name="email"
                                 onChange={handleChangeEmail}
@@ -90,12 +89,11 @@ function Login() {
                             />
                         </RegisterInputContainer>
                         <RegisterInputContainer>
-                            <RegisterLabel>비밀번호</RegisterLabel>
                             <UserInput
                                 type="password"
                                 minLength={RANGE.PW_MIN_LENGTH}
                                 maxLength={RANGE.PW_MAX_LENGTH}
-                                width="500px"
+                                width="38rem"
                                 placeholder="비밀번호를 입력해주세요"
                                 name="password"
                                 required
