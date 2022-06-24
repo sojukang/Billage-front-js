@@ -31,10 +31,3 @@ export const RegisterButtonContainer = styled.div`
   align-items: center;
   gap: 12px;
 `;
-
-export const RegisterLabel = styled.label`
-  margin-bottom: 22px;
-
-  color: #333333;
-  font-weight: 700;
-`;

@@ -1,13 +1,7 @@
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 
-import {
-    RegisterButtonContainer,
-    RegisterInputContainer,
-    RegisterLabel,
-    RegisterPageContainer,
-    StyledButton,
-} from "./styled";
+import {RegisterButtonContainer, RegisterInputContainer, RegisterPageContainer, StyledButton,} from "./styled";
 import {useInputHandler} from "../UserInputHandler";
 import {RANGE, registerValidator} from "../../validator/Validator";
 import UserForm from "../../components/common/userinput/UserForm";
@@ -81,12 +75,11 @@ function SignUp() {
                 <RegisterPageContainer>
                     <UserForm onSubmit={registerUserInfo}>
                         <RegisterInputContainer>
-                            <RegisterLabel>이메일</RegisterLabel>
                             <UserInput
                                 type="email"
                                 minLength={RANGE.EMAIL_MIN_LENGTH}
                                 maxLength={RANGE.EMAIL_MAX_LENGTH}
-                                width="500px"
+                                width="38rem"
                                 placeholder="이메일을 입력해주세요"
                                 name="email"
                                 value={userInfo.email}
@@ -97,12 +90,11 @@ function SignUp() {
                             />
                         </RegisterInputContainer>
                         <RegisterInputContainer>
-                            <RegisterLabel>닉네임</RegisterLabel>
                             <UserInput
                                 type="text"
                                 minLength={RANGE.USERNAME_MIN_LENGTH}
                                 maxLength={RANGE.USERNAME_MAX_LENGTH}
-                                width="500px"
+                                width="38rem"
                                 placeholder="닉네임을 입력해주세요"
                                 name="nickname"
                                 value={userInfo.nickname}
@@ -112,12 +104,11 @@ function SignUp() {
                             />
                         </RegisterInputContainer>
                         <RegisterInputContainer>
-                            <RegisterLabel>비밀번호</RegisterLabel>
                             <UserInput
                                 type="password"
                                 minLength={RANGE.PW_MIN_LENGTH}
                                 maxLength={RANGE.PW_MAX_LENGTH}
-                                width="500px"
+                                width="38rem"
                                 placeholder="비밀번호를 입력해주세요"
                                 name="password"
                                 value={userInfo.password}
@@ -127,12 +118,11 @@ function SignUp() {
                             />
                         </RegisterInputContainer>
                         <RegisterInputContainer>
-                            <RegisterLabel>비밀번호 확인</RegisterLabel>
                             <UserInput
                                 type="password"
                                 minLength={RANGE.PW_MIN_LENGTH}
                                 maxLength={RANGE.PW_MAX_LENGTH}
-                                width="500px"
+                                width="38rem"
                                 placeholder="비밀번호를 다시 한 번 입력해주세요"
                                 name="passwordConfirm"
                                 value={userInfo.passwordConfirm}
