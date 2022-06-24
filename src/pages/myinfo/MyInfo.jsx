@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {getBooksByUser} from "../../BookApi";
+import {getBooksByUser, getRequestBooksByUser} from "../../BookApi";
 import styled from "styled-components";
 import MyInfoBookContainer from "./MyInfoBookContainer";
 import PendingBook from "./PendingBook";
 import AvailableBook from "./AvailableBook";
 import Header from "../../components/Header";
+import LentBook from "./LentBook";
 
 export const CategoryBox = styled.main`
   justify-content: center;
@@ -36,9 +37,11 @@ const NoContentMessage = styled.div`
 function MyInfo() {
     const user = useSelector(state => state);
     const [bookItems, setBookItems] = useState(null);
+    const [lentBookItems, setLentBookItems] = useState(null);
 
     useEffect(() => {
         getBooks(user.token);
+        getClientRequest(user.token);
     }, [user])
 
     function getBooks(token) {
@@ -52,6 +55,21 @@ function MyInfo() {
             console.log(error.response.data.message)
         })
     }
+
+    function getClientRequest(token) {
+        if (!token) {
+            return
+        }
+        getRequestBooksByUser(token)
+            .then((response) => {
+                setLentBookItems(response)
+            }).catch((error) => {
+            console.log(error.response.data.message)
+        })
+    }
+
+    const requests = [];
+    const lentBooks = [];
 
     const availables = [];
     const pendings = [];
@@ -67,16 +85,52 @@ function MyInfo() {
             } else if (bookItems[key].status === "UNAVAILABLE")
                 unavailables.push(bookItems[key])
         }
+    }
 
-        console.log(`빌림 가능: ${availables}`)
-        console.log(`빌림 대기중: ${pendings}`)
-        console.log(`빌림 불가: ${unavailables}`)
+    if (lentBookItems) {
+        for (const key in lentBookItems) {
+            if (lentBookItems[key].status === "REQUEST") {
+                requests.push(lentBookItems[key]);
+            } else if (lentBookItems[key].status === "LENT") {
+                lentBooks.push(lentBookItems[key])
+            }
+        }
     }
 
     return (
         <>
             <Header/>
             <CategoryBox>
+                <div align="center">
+                    <CategoryName>빌림 요청한 책👉</CategoryName>
+                    {requests.length > 0 ? requests.map((book) => (
+                            <LentBook
+                                key={book.id}
+                                id={book.id}
+                                title={book.title}
+                                detailMessage={book.detailMessage}
+                                imageUrl={book.imageUrl}
+                                location={book.location}
+                            />
+                        )) :
+                        <NoContentMessage>빌림 요청 한 책이 없어요😭</NoContentMessage>
+                    }
+                </div>
+                <div align="center">
+                    <CategoryName>빌린 책👍</CategoryName>
+                    {lentBooks.length > 0 ? lentBooks.map((book) => (
+                            <LentBook
+                                key={book.id}
+                                id={book.id}
+                                title={book.title}
+                                detailMessage={book.detailMessage}
+                                imageUrl={book.imageUrl}
+                                location={book.location}
+                            />
+                        )) :
+                        <NoContentMessage>아직 빌린 책이 없어요😭</NoContentMessage>
+                    }
+                </div>
                 <div align="center">
                     <CategoryName>빌림 요청 온 책🙏</CategoryName>
                     {pendings.length > 0 ? pendings.map((book) => (
