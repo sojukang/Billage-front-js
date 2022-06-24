@@ -13,6 +13,8 @@ import {RANGE, registerValidator} from "../../validator/Validator";
 import UserForm from "../../components/common/userinput/UserForm";
 import UserInput from "../../components/common/userinput/UserInput";
 import {postSignUp} from "../../BookApi";
+import {ContentsBox} from "../ContentsBox";
+import Header from "../../components/Header";
 
 const initialUserInfo = {
     email: "",
@@ -73,86 +75,91 @@ function SignUp() {
     };
 
     return (
-        <RegisterPageContainer>
-            <UserForm onSubmit={registerUserInfo}>
-                <RegisterInputContainer>
-                    <RegisterLabel>이메일</RegisterLabel>
-                    <UserInput
-                        type="email"
-                        minLength={RANGE.EMAIL_MIN_LENGTH}
-                        maxLength={RANGE.EMAIL_MAX_LENGTH}
-                        width="500px"
-                        placeholder="이메일을 입력해주세요"
-                        name="email"
-                        value={userInfo.email}
-                        onChange={handleChangeInput}
-                        required
-                        autoFocus
-                        errorMessage={errorMessage.email}
-                    />
-                </RegisterInputContainer>
-                <RegisterInputContainer>
-                    <RegisterLabel>닉네임</RegisterLabel>
-                    <UserInput
-                        type="text"
-                        minLength={RANGE.USERNAME_MIN_LENGTH}
-                        maxLength={RANGE.USERNAME_MAX_LENGTH}
-                        width="500px"
-                        placeholder="닉네임을 입력해주세요"
-                        name="nickname"
-                        value={userInfo.nickname}
-                        onChange={handleChangeInput}
-                        required
-                        errorMessage={errorMessage.nickname}
-                    />
-                </RegisterInputContainer>
-                <RegisterInputContainer>
-                    <RegisterLabel>비밀번호</RegisterLabel>
-                    <UserInput
-                        type="password"
-                        minLength={RANGE.PW_MIN_LENGTH}
-                        maxLength={RANGE.PW_MAX_LENGTH}
-                        width="500px"
-                        placeholder="비밀번호를 입력해주세요"
-                        name="password"
-                        value={userInfo.password}
-                        required
-                        onChange={handleChangeInput}
-                        errorMessage={errorMessage.password}
-                    />
-                </RegisterInputContainer>
-                <RegisterInputContainer>
-                    <RegisterLabel>비밀번호 확인</RegisterLabel>
-                    <UserInput
-                        type="password"
-                        minLength={RANGE.PW_MIN_LENGTH}
-                        maxLength={RANGE.PW_MAX_LENGTH}
-                        width="500px"
-                        placeholder="비밀번호를 다시 한 번 입력해주세요"
-                        name="passwordConfirm"
-                        value={userInfo.passwordConfirm}
-                        required
-                        onChange={handlePasswordConfirmChange}
-                        errorMessage={errorMessage.passwordConfirm}
-                    />
-                </RegisterInputContainer>
-                <RegisterButtonContainer>
-                    <StyledButton type="submit">
-                        가입하기
-                    </StyledButton>
-                    <Link to={"/login"}>
-                        <StyledButton>
-                            로그인
-                        </StyledButton>
-                    </Link>
-                    <Link to={"/"}>
-                        <StyledButton>
-                            홈으로
-                        </StyledButton>
-                    </Link>
-                </RegisterButtonContainer>
-            </UserForm>
-        </RegisterPageContainer>
+        <>
+            <Header/>
+            <ContentsBox>
+                <RegisterPageContainer>
+                    <UserForm onSubmit={registerUserInfo}>
+                        <RegisterInputContainer>
+                            <RegisterLabel>이메일</RegisterLabel>
+                            <UserInput
+                                type="email"
+                                minLength={RANGE.EMAIL_MIN_LENGTH}
+                                maxLength={RANGE.EMAIL_MAX_LENGTH}
+                                width="500px"
+                                placeholder="이메일을 입력해주세요"
+                                name="email"
+                                value={userInfo.email}
+                                onChange={handleChangeInput}
+                                required
+                                autoFocus
+                                errorMessage={errorMessage.email}
+                            />
+                        </RegisterInputContainer>
+                        <RegisterInputContainer>
+                            <RegisterLabel>닉네임</RegisterLabel>
+                            <UserInput
+                                type="text"
+                                minLength={RANGE.USERNAME_MIN_LENGTH}
+                                maxLength={RANGE.USERNAME_MAX_LENGTH}
+                                width="500px"
+                                placeholder="닉네임을 입력해주세요"
+                                name="nickname"
+                                value={userInfo.nickname}
+                                onChange={handleChangeInput}
+                                required
+                                errorMessage={errorMessage.nickname}
+                            />
+                        </RegisterInputContainer>
+                        <RegisterInputContainer>
+                            <RegisterLabel>비밀번호</RegisterLabel>
+                            <UserInput
+                                type="password"
+                                minLength={RANGE.PW_MIN_LENGTH}
+                                maxLength={RANGE.PW_MAX_LENGTH}
+                                width="500px"
+                                placeholder="비밀번호를 입력해주세요"
+                                name="password"
+                                value={userInfo.password}
+                                required
+                                onChange={handleChangeInput}
+                                errorMessage={errorMessage.password}
+                            />
+                        </RegisterInputContainer>
+                        <RegisterInputContainer>
+                            <RegisterLabel>비밀번호 확인</RegisterLabel>
+                            <UserInput
+                                type="password"
+                                minLength={RANGE.PW_MIN_LENGTH}
+                                maxLength={RANGE.PW_MAX_LENGTH}
+                                width="500px"
+                                placeholder="비밀번호를 다시 한 번 입력해주세요"
+                                name="passwordConfirm"
+                                value={userInfo.passwordConfirm}
+                                required
+                                onChange={handlePasswordConfirmChange}
+                                errorMessage={errorMessage.passwordConfirm}
+                            />
+                        </RegisterInputContainer>
+                        <RegisterButtonContainer>
+                            <StyledButton type="submit">
+                                가입하기
+                            </StyledButton>
+                            <Link to={"/login"}>
+                                <StyledButton>
+                                    로그인
+                                </StyledButton>
+                            </Link>
+                            <Link to={"/"}>
+                                <StyledButton>
+                                    홈으로
+                                </StyledButton>
+                            </Link>
+                        </RegisterButtonContainer>
+                    </UserForm>
+                </RegisterPageContainer>
+            </ContentsBox>
+        </>
     );
 }
 

@@ -14,7 +14,7 @@ const styles = {
 function Main() {
     return (
         <div>
-            <Header name={""}/>
+            <Header/>
             <ContentsBox>
                 <div style={styles.div}>
                     <BookList/>
