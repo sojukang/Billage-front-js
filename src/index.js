@@ -8,9 +8,12 @@ import {BrowserRouter} from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import {Provider} from "react-redux";
 import {createStore} from "redux";
-import LoginReducer from "./reducers/User";
+import {PersistGate} from "redux-persist/integration/react";
+import {persistStore} from "redux-persist";
+import rootReducer from "./reducers/User";
 
-const store = createStore(LoginReducer);
+const store = createStore(rootReducer);
+const persistor = persistStore(store);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,7 +21,9 @@ root.render(
         <BrowserRouter>
             <GlobalStyle/>
             <Provider store={store}>
-                <App/>
+                <PersistGate loading={null} persistor={persistor}>
+                    <App/>
+                </PersistGate>
             </Provider>
         </BrowserRouter>
     </React.StrictMode>

@@ -1,3 +1,11 @@
+import storage from "redux-persist/lib/storage"
+import persistReducer from "redux-persist/es/persistReducer";
+
+const persistConfig = {
+    key: "root",
+    storage: storage
+}
+
 const initialState = {
     token: ""
 }
@@ -32,4 +40,4 @@ const LoginReducer = (state = initialState, action) => {
     }
 }
 
-export default LoginReducer;
+export default persistReducer(persistConfig, LoginReducer);

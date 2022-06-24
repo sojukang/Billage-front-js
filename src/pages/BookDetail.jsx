@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import BookItem from "../components/BookItem";
-import {getBook, postRequestBorrowing} from "../BookApi";
+import {getBook, postRequestRent} from "../BookApi";
 import {Button, withStyles} from "@material-ui/core";
 import UserInput from "../components/common/userinput/UserInput";
 import {useSelector} from "react-redux";
@@ -33,8 +33,8 @@ function BookDetail() {
         navigate(path);
     }
 
-    function requestBorrowing(id, user) {
-        postRequestBorrowing({
+    function requestRent(id, user) {
+        postRequestRent({
             id: id,
             token: user.token
         }).then((res) => {
@@ -91,7 +91,7 @@ function BookDetail() {
                     name="borrowingMessage"
                 />
                 <StyledButton
-                    onClick={() => requestBorrowing(id, user)}
+                    onClick={() => requestRent(id, user)}
                     width="24rem"
                 >
                     빌림 요청
