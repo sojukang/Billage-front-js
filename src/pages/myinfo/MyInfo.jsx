@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {getBooksByUser, getRequestBooksByUser} from "../../BookApi";
+import {getBooksByUser, getLentBooksByUser, getRequestBooksByUser} from "../../BookApi";
 import styled from "styled-components";
 import MyInfoBookContainer from "./MyInfoBookContainer";
 import PendingBook from "./PendingBook";
@@ -38,10 +38,12 @@ function MyInfo() {
     const user = useSelector(state => state);
     const [bookItems, setBookItems] = useState(null);
     const [lentBookItems, setLentBookItems] = useState(null);
+    const [BookAsClientItems, setBookAsClientItems] = useState(null);
 
     useEffect(() => {
         getBooks(user.token);
         getClientRequest(user.token);
+        getLentBooks(user.token);
     }, [user])
 
     function getBooks(token) {
@@ -56,13 +58,25 @@ function MyInfo() {
         })
     }
 
+    function getLentBooks(token) {
+        if (!token) {
+            return
+        }
+        getLentBooksByUser(token)
+            .then((response) => {
+                setLentBookItems(response)
+            }).catch((error) => {
+            console.log(error.response.data.message)
+        })
+    }
+
     function getClientRequest(token) {
         if (!token) {
             return
         }
         getRequestBooksByUser(token)
             .then((response) => {
-                setLentBookItems(response)
+                setBookAsClientItems(response)
             }).catch((error) => {
             console.log(error.response.data.message)
         })
@@ -71,28 +85,29 @@ function MyInfo() {
     const requests = [];
     const lentBooks = [];
 
-    const availables = [];
+    let availables = [];
     const pendings = [];
     const unavailables = [];
-
-    if (bookItems) {
-        for (const key in bookItems) {
-            if (bookItems[key].status === "AVAILABLE") {
-                availables.push(bookItems[key]);
-            }
-            if (bookItems[key].status === "PENDING") {
-                pendings.push(bookItems[key])
-            } else if (bookItems[key].status === "UNAVAILABLE")
-                unavailables.push(bookItems[key])
-        }
-    }
 
     if (lentBookItems) {
         for (const key in lentBookItems) {
             if (lentBookItems[key].status === "REQUEST") {
-                requests.push(lentBookItems[key]);
-            } else if (lentBookItems[key].status === "LENT") {
-                lentBooks.push(lentBookItems[key])
+                pendings.push(lentBookItems[key])
+            } else if (lentBookItems[key].status === "LENT")
+                unavailables.push(lentBookItems[key])
+        }
+    }
+
+    if (bookItems) {
+        availables = bookItems.filter(book => book.status === "AVAILABLE");
+    }
+
+    if (BookAsClientItems) {
+        for (const key in BookAsClientItems) {
+            if (BookAsClientItems[key].status === "REQUEST") {
+                requests.push(BookAsClientItems[key]);
+            } else if (BookAsClientItems[key].status === "LENT") {
+                lentBooks.push(BookAsClientItems[key])
             }
         }
     }
@@ -109,6 +124,7 @@ function MyInfo() {
                                 id={book.id}
                                 title={book.title}
                                 detailMessage={book.detailMessage}
+                                lentMessage={book.requestMessage}
                                 imageUrl={book.imageUrl}
                                 location={book.location}
                             />
@@ -124,6 +140,7 @@ function MyInfo() {
                                 id={book.id}
                                 title={book.title}
                                 detailMessage={book.detailMessage}
+                                lentMessage={book.requestMessage}
                                 imageUrl={book.imageUrl}
                                 location={book.location}
                             />
@@ -131,6 +148,7 @@ function MyInfo() {
                         <NoContentMessage>아직 빌린 책이 없어요😭</NoContentMessage>
                     }
                 </div>
+                <hr/>
                 <div align="center">
                     <CategoryName>빌림 요청 온 책🙏</CategoryName>
                     {pendings.length > 0 ? pendings.map((book) => (
@@ -138,6 +156,7 @@ function MyInfo() {
                                 key={book.id}
                                 id={book.id}
                                 title={book.title}
+                                lentMessage={book.requestMessage}
                                 imageUrl={book.imageUrl}
                                 location={book.location}
                             />
@@ -168,6 +187,7 @@ function MyInfo() {
                                 key={book.id}
                                 id={book.id}
                                 title={book.title}
+                                lentMessage={book.requestMessage}
                                 imageUrl={book.imageUrl}
                                 location={book.location}
                             />

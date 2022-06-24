@@ -59,7 +59,9 @@ export async function postBookRegister(data, token) {
 
 export async function postRequestRent(data) {
     const response = await axios.post(
-        `http://localhost:8080/api/books/${data.id}`, {}
+        `http://localhost:8080/api/books/${data.id}`, {
+            requestMessage: data.lentMessage
+        }
         ,
         {
             headers: {
@@ -73,6 +75,18 @@ export async function postRequestRent(data) {
 export async function getBooksByUser(token) {
     const response = await axios.get(
         `http://localhost:8080/api/books/me`,
+        {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer ${token}`,
+            },
+        });
+    return response.data;
+}
+
+export async function getLentBooksByUser(token) {
+    const response = await axios.get(
+        `http://localhost:8080/api/books/me/lent`,
         {
             headers: {
                 "Access-Control-Allow-Origin": "*",
@@ -96,7 +110,7 @@ export async function getRequestBooksByUser(token) {
 
 export async function postAllowOrDenyRent(token, id, allowOrDeny) {
     const response = await axios.post(
-        `http://localhost:8080/api/books/${id}/rents`,
+        `http://localhost:8080/api/books/${id}/lents`,
         {
             allowOrDeny: allowOrDeny
         },

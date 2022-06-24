@@ -88,8 +88,8 @@ function BookItem({id, nickname, title, imageUrl, detailMessage, location, statu
                     src={imageUrl}
                     style={styles.img} alt={"Book"}/>
                 <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
-                <BookInfos>닉네임: {nickname}</BookInfos>
-                <BookInfos>책 위치: {location}</BookInfos>
+                <BookInfos>주인: {nickname}</BookInfos>
+                <BookInfos>위치: {location}</BookInfos>
                 <BookInfos>메시지: {detailMessage}</BookInfos>
             </div>
         </BookContainer>

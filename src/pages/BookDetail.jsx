@@ -24,6 +24,11 @@ function BookDetail() {
     const [bookItem, setBookItem] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [lentMessage, setLentMessage] = useState("");
+
+    const handleChangeLentMessage = (e) => {
+        setLentMessage(e.target.value);
+    }
 
     const navigate = useNavigate();
     const toMain = () => {
@@ -36,9 +41,10 @@ function BookDetail() {
         navigate(path);
     }
 
-    function requestRent(id, user) {
+    function requestRent(id, user, lentMessage) {
         postRequestRent({
             id: id,
+            lentMessage: lentMessage,
             token: user.token
         }).then((res) => {
             alert("요청이 성공하였습니다.");
@@ -49,7 +55,7 @@ function BookDetail() {
                 toLogin();
                 return
             }
-            alert("요청이 실패하였습니다.");
+            alert(error.response.data.message);
             console.log(error.response.data.message)
         })
     }
@@ -92,13 +98,14 @@ function BookDetail() {
                     />
                     <div>
                         <UserInput
-                            type="borrowingMessage"
+                            type="lentMessage"
                             width="22em"
                             placeholder="주인에게 보낼 메시지👍"
-                            name="borrowingMessage"
+                            onChange={handleChangeLentMessage}
+                            name="lentMessage"
                         />
                         <StyledButton
-                            onClick={() => requestRent(id, user)}
+                            onClick={() => requestRent(id, user, lentMessage)}
                             width="24rem"
                         >
                             빌림 요청
