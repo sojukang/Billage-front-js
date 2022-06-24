@@ -6,6 +6,8 @@ import {useSelector} from "react-redux";
 import {deleteBook, putUpdate} from "../../BookApi";
 import {useLocation, useNavigate} from "react-router-dom";
 import {BookImage} from "../myinfo/MyInfoBookContainer";
+import Header from "../../components/Header";
+import {ContentsBox} from "../ContentsBox";
 
 
 function BookUpdate() {
@@ -55,44 +57,49 @@ function BookUpdate() {
     }
 
     return (
-        <div align="center">
-            <BookContainer>
-                <BookImage>
-                    <img src={state.imageUrl} alt={"Book"}/>
-                </BookImage>
-                <BookInfos>{state.title.replace(/<[^>]*>?/g, '')}</BookInfos>
-                <BookInfos>닉네임: {state.nickname}</BookInfos>
-                <BookInfos>책 위치: {state.location}</BookInfos>
-                <BookInfos>상세 메시지: {state.detailMessage}</BookInfos>
-            </BookContainer>
-            <div>
-                <UserInput
-                    type="location"
-                    width="22em"
-                    placeholder={state.location}
-                    name="location"
-                    onChange={handleChangeLocation}
-                />
-                <UserInput
-                    type="detailMessage"
-                    width="22em"
-                    placeholder={state.detailMessage}
-                    name="detailMessage"
-                    onChange={handleChangeDetailMessage}
-                />
-                <StyledButton
-                    onClick={() => updateRequest(user.token, state.id, location, detailMessage)}
-                >
-                    수정하기✍️
-                </StyledButton>
-                <br/>
-                <StyledButton
-                    onClick={() => deleteRequest(user.token, state.id)}
-                >
-                    삭제하기😱
-                </StyledButton>
-            </div>
-        </div>
+        <>
+            <Header/>
+            <ContentsBox>
+                <div align="center">
+                    <BookContainer>
+                        <BookImage>
+                            <img src={state.imageUrl} alt={"Book"}/>
+                        </BookImage>
+                        <BookInfos>{state.title.replace(/<[^>]*>?/g, '')}</BookInfos>
+                        <BookInfos>닉네임: {state.nickname}</BookInfos>
+                        <BookInfos>책 위치: {state.location}</BookInfos>
+                        <BookInfos>상세 메시지: {state.detailMessage}</BookInfos>
+                    </BookContainer>
+                    <div>
+                        <UserInput
+                            type="location"
+                            width="22em"
+                            placeholder={state.location}
+                            name="location"
+                            onChange={handleChangeLocation}
+                        />
+                        <UserInput
+                            type="detailMessage"
+                            width="22em"
+                            placeholder={state.detailMessage}
+                            name="detailMessage"
+                            onChange={handleChangeDetailMessage}
+                        />
+                        <StyledButton
+                            onClick={() => updateRequest(user.token, state.id, location, detailMessage)}
+                        >
+                            수정하기✍️
+                        </StyledButton>
+                        <br/>
+                        <StyledButton
+                            onClick={() => deleteRequest(user.token, state.id)}
+                        >
+                            삭제하기😱
+                        </StyledButton>
+                    </div>
+                </div>
+            </ContentsBox>
+        </>
     )
 }
 

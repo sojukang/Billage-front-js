@@ -3,6 +3,8 @@ import Button from "../components/common/Button";
 import React, {useState} from "react";
 import {getNaverBookSearch} from "../BookApi";
 import SearchBookItem from "../components/SearchBookItem";
+import {ContentsBox} from "./ContentsBox";
+import Header from "../components/Header";
 
 const styles = {
     div: {
@@ -48,23 +50,28 @@ function BookSearch() {
     }
 
     return (
-        <div style={styles.divParent}>
-            <div style={styles.div}>
-                <Input
-                    style={styles.input}
-                    onChange={onChangeSearchTitle}
-                >책 이름</Input>
-                <Button
-                    onClick={fetchSearchBooks}
-                    style={styles.button}>
-                    검색</Button>
-            </div>
-            <div style={styles.bookItems}>
-                {bookItems.map((book) => (
-                    <SearchBookItem imageUrl={book.image} title={book.title}/>
-                ))}
-            </div>
-        </div>
+        <>
+            <Header/>
+            <ContentsBox>
+                <div style={styles.divParent}>
+                    <div style={styles.div}>
+                        <Input
+                            style={styles.input}
+                            onChange={onChangeSearchTitle}
+                        >책 이름</Input>
+                        <Button
+                            onClick={fetchSearchBooks}
+                            style={styles.button}>
+                            검색</Button>
+                    </div>
+                    <div style={styles.bookItems}>
+                        {bookItems.map((book) => (
+                            <SearchBookItem imageUrl={book.image} title={book.title}/>
+                        ))}
+                    </div>
+                </div>
+            </ContentsBox>
+        </>
     )
 }
 

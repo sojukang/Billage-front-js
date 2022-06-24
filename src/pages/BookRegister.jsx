@@ -4,10 +4,12 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import React, {useState} from "react";
 import {postBookRegister} from "../BookApi";
 import {useSelector} from "react-redux";
+import {ContentsBox} from "./ContentsBox";
+import Header from "../components/Header";
 
 const styles = {
     div: {
-        height: "100vh",
+        height: "50vh",
         display: "flex",
         alignItems: "center",
         marginBottom: "10vh"
@@ -63,28 +65,33 @@ function BookRegister() {
     }
 
     return (
-        <div style={styles.div}>
-            <div style={styles.divChild}>
-                <img src={imageUrl} alt={"hi"}/>
-                <p>
-                    {title.replace(/<[^>]*>?/g, '')}
-                </p>
-                <Input
-                    style={styles.input}
-                    placeholder={"책 위치"}
-                    onChange={onChangeHandleLocation}
-                />
-                <Input
-                    style={styles.input}
-                    placeholder={"상세 메시지"}
-                    onChange={onChangeHandleDetailMessage}
-                />
-                <Button
-                    style={styles.button}
-                    onClick={postRegister}
-                >등록</Button>
-            </div>
-        </div>
+        <>
+            <Header/>
+            <ContentsBox>
+                <div style={styles.div}>
+                    <div style={styles.divChild}>
+                        <img src={imageUrl} alt={"hi"}/>
+                        <p>
+                            {title.replace(/<[^>]*>?/g, '')}
+                        </p>
+                        <Input
+                            style={styles.input}
+                            placeholder={"책 위치"}
+                            onChange={onChangeHandleLocation}
+                        />
+                        <Input
+                            style={styles.input}
+                            placeholder={"상세 메시지"}
+                            onChange={onChangeHandleDetailMessage}
+                        />
+                        <Button
+                            style={styles.button}
+                            onClick={postRegister}
+                        >등록</Button>
+                    </div>
+                </div>
+            </ContentsBox>
+        </>
     )
 }
 

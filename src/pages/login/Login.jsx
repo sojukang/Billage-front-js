@@ -14,6 +14,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {postLogin} from "../../BookApi";
 import {LoginUser} from "../../reducers/User";
 import {useInputHandler} from "../UserInputHandler";
+import Header from "../../components/Header";
+import {ContentsBox} from "../ContentsBox";
 
 const initialUserInfo = {
     email: "",
@@ -67,55 +69,60 @@ function Login() {
     }
 
     return (
-        <RegisterPageContainer>
-            <UserForm>
-                <RegisterInputContainer>
-                    <RegisterLabel>이메일</RegisterLabel>
-                    <UserInput
-                        type="email"
-                        minLength={RANGE.EMAIL_MIN_LENGTH}
-                        maxLength={RANGE.EMAIL_MAX_LENGTH}
-                        width="500px"
-                        placeholder="이메일을 입력해주세요"
-                        name="email"
-                        onChange={handleChangeEmail}
-                        required
-                        autoFocus
-                        errorMessage={errorMessage.email}
-                    />
-                </RegisterInputContainer>
-                <RegisterInputContainer>
-                    <RegisterLabel>비밀번호</RegisterLabel>
-                    <UserInput
-                        type="password"
-                        minLength={RANGE.PW_MIN_LENGTH}
-                        maxLength={RANGE.PW_MAX_LENGTH}
-                        width="500px"
-                        placeholder="비밀번호를 입력해주세요"
-                        name="password"
-                        required
-                        onChange={handleChangePassword}
-                        errorMessage={errorMessage.password}
-                    />
-                </RegisterInputContainer>
-                <RegisterButtonContainer>
-                    <StyledButton
-                        onClick={signIn}>
-                        로그인
-                    </StyledButton>
-                    <Link to={"/signup"}>
-                        <StyledButton>
-                            가입하기
-                        </StyledButton>
-                    </Link>
-                    <Link to={"/"}>
-                        <StyledButton>
-                            홈으로
-                        </StyledButton>
-                    </Link>
-                </RegisterButtonContainer>
-            </UserForm>
-        </RegisterPageContainer>
+        <>
+            <Header/>
+            <ContentsBox>
+                <RegisterPageContainer>
+                    <UserForm>
+                        <RegisterInputContainer>
+                            <RegisterLabel>이메일</RegisterLabel>
+                            <UserInput
+                                type="email"
+                                minLength={RANGE.EMAIL_MIN_LENGTH}
+                                maxLength={RANGE.EMAIL_MAX_LENGTH}
+                                width="500px"
+                                placeholder="이메일을 입력해주세요"
+                                name="email"
+                                onChange={handleChangeEmail}
+                                required
+                                autoFocus
+                                errorMessage={errorMessage.email}
+                            />
+                        </RegisterInputContainer>
+                        <RegisterInputContainer>
+                            <RegisterLabel>비밀번호</RegisterLabel>
+                            <UserInput
+                                type="password"
+                                minLength={RANGE.PW_MIN_LENGTH}
+                                maxLength={RANGE.PW_MAX_LENGTH}
+                                width="500px"
+                                placeholder="비밀번호를 입력해주세요"
+                                name="password"
+                                required
+                                onChange={handleChangePassword}
+                                errorMessage={errorMessage.password}
+                            />
+                        </RegisterInputContainer>
+                        <RegisterButtonContainer>
+                            <StyledButton
+                                onClick={signIn}>
+                                로그인
+                            </StyledButton>
+                            <Link to={"/signup"}>
+                                <StyledButton>
+                                    가입하기
+                                </StyledButton>
+                            </Link>
+                            <Link to={"/"}>
+                                <StyledButton>
+                                    홈으로
+                                </StyledButton>
+                            </Link>
+                        </RegisterButtonContainer>
+                    </UserForm>
+                </RegisterPageContainer>
+            </ContentsBox>
+        </>
     )
 }
 

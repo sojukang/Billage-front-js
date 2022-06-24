@@ -5,6 +5,8 @@ import {getBook, postRequestRent} from "../BookApi";
 import {Button, withStyles} from "@material-ui/core";
 import UserInput from "../components/common/userinput/UserInput";
 import {useSelector} from "react-redux";
+import {ContentsBox} from "./ContentsBox";
+import Header from "../components/Header";
 
 export const StyledButton = withStyles({
     root: {
@@ -75,30 +77,35 @@ function BookDetail() {
     if (!bookItem) return null;
 
     return (
-        <div align="center">
-            <BookItem
-                id={id}
-                title={bookItem.title}
-                nickname={bookItem.nickname}
-                imageUrl={bookItem.imageUrl}
-                detailMessage={bookItem.detailMessage}
-                location={bookItem.location}
-            />
-            <div>
-                <UserInput
-                    type="borrowingMessage"
-                    width="22em"
-                    placeholder="주인에게 보낼 메시지👍"
-                    name="borrowingMessage"
-                />
-                <StyledButton
-                    onClick={() => requestRent(id, user)}
-                    width="24rem"
-                >
-                    빌림 요청
-                </StyledButton>
-            </div>
-        </div>
+        <>
+            <Header/>
+            <ContentsBox>
+                <div align="center">
+                    <BookItem
+                        id={id}
+                        title={bookItem.title}
+                        nickname={bookItem.nickname}
+                        imageUrl={bookItem.imageUrl}
+                        detailMessage={bookItem.detailMessage}
+                        location={bookItem.location}
+                    />
+                    <div>
+                        <UserInput
+                            type="borrowingMessage"
+                            width="22em"
+                            placeholder="주인에게 보낼 메시지👍"
+                            name="borrowingMessage"
+                        />
+                        <StyledButton
+                            onClick={() => requestRent(id, user)}
+                            width="24rem"
+                        >
+                            빌림 요청
+                        </StyledButton>
+                    </div>
+                </div>
+            </ContentsBox>
+        </>
     )
 }
 
