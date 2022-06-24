@@ -81,3 +81,46 @@ export async function getBooksByUser(token) {
         });
     return response.data;
 }
+
+export async function postAllowOrDenyRent(token, id, allowOrDeny) {
+    const response = await axios.post(
+        `http://localhost:8080/api/books/${id}/rents`,
+        {
+            allowOrDeny: allowOrDeny
+        },
+        {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer ${token}`,
+            },
+        });
+    return response;
+}
+
+export async function putUpdate(token, id, location, detailMessage) {
+    const response = await axios.put(
+        `http://localhost:8080/api/books/me/${id}`,
+        {
+            location: location,
+            detailMessage: detailMessage
+        },
+        {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer ${token}`,
+            },
+        });
+    return response;
+}
+
+export async function deleteBook(token, id) {
+    const response = await axios.delete(
+        `http://localhost:8080/api/books/${id}`,
+        {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer ${token}`,
+            },
+        });
+    return response;
+}
