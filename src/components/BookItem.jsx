@@ -43,16 +43,47 @@ export const BookInfos = styled.p`
   text-overflow: ellipsis;
 `;
 
-function BookItem({id, nickname, title, imageUrl, detailMessage, location}) {
+export const BookStatus = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #61dafb;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: aliceblue;
+  width: 5rem;
+  height: 2rem;
+  :hover {
+    box-shadow: 0 0 10px 0 #dddddd;
+  }
+`;
+
+function BookItem({id, nickname, title, imageUrl, detailMessage, location, status}) {
     const navigate = useNavigate();
     const toBookDetail = () => {
+        if (status !== "AVAILABLE") {
+            alert("지금은 빌릴 수 없어요😥")
+            return;
+        }
         const path = `/books/detail?id=${id}`;
         navigate(path);
+    }
+
+    function handleStatus(status) {
+        switch (status) {
+            case "PENDING":
+                return "승낙 대기";
+            case "UNAVAILABLE":
+                return "대여 중";
+            default:
+                return "대여 가능";
+        }
     }
 
     return (
         <BookContainer>
             <div onClick={toBookDetail}>
+                <BookStatus>{handleStatus(status)}</BookStatus>
                 <img
                     src={imageUrl}
                     style={styles.img} alt={"Book"}/>

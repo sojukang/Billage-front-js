@@ -53,7 +53,7 @@ function BookList() {
                               title={book.title}
                               imageUrl={book.imageUrl}
                               detailMessage={book.detailMessage}
-
+                              status={book.status}
                               location={book.location}
                     />
                 ))}

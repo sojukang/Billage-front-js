@@ -82,6 +82,18 @@ export async function getBooksByUser(token) {
     return response.data;
 }
 
+export async function getRequestBooksByUser(token) {
+    const response = await axios.get(
+        `http://localhost:8080/api/books/client`,
+        {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer ${token}`,
+            },
+        });
+    return response.data;
+}
+
 export async function postAllowOrDenyRent(token, id, allowOrDeny) {
     const response = await axios.post(
         `http://localhost:8080/api/books/${id}/rents`,

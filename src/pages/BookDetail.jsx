@@ -87,6 +87,7 @@ function BookDetail() {
                         nickname={bookItem.nickname}
                         imageUrl={bookItem.imageUrl}
                         detailMessage={bookItem.detailMessage}
+                        status={bookItem.status}
                         location={bookItem.location}
                     />
                     <div>
