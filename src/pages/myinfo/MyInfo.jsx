@@ -84,7 +84,9 @@ function MyInfo() {
                         <AvailableBook
                             key={book.id}
                             id={book.id}
+                            nickname={book.nickname}
                             title={book.title}
+                            detailMessage={book.detailMessage}
                             imageUrl={book.imageUrl}
                             location={book.location}
                         />

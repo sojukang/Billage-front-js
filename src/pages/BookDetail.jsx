@@ -9,7 +9,8 @@ import {useSelector} from "react-redux";
 export const StyledButton = withStyles({
     root: {
         width: "24rem",
-        backgroundColor: "#efd7d7"
+        backgroundColor: "#efd7d7",
+        marginTop: "1rem"
     },
 })(Button);
 
