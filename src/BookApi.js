@@ -1,22 +1,24 @@
 import axios from "axios";
 
+const BASE_URL = "http://54.180.124.23:8080/api"
+
 export async function getBooks() {
     const response = await axios.get(
-        "http://localhost:8080/api/books"
+        `${BASE_URL}/books`
     );
     return response.data;
 }
 
 export async function getBook(id) {
     const response = await axios.get(
-        `http://localhost:8080/api/books/${id}`
+        `${BASE_URL}/books/${id}`
     );
     return response.data;
 }
 
 export async function postSignUp(body) {
     const response = await axios.post(
-        `http://localhost:8080/api/members/`,
+        `${BASE_URL}/members/`,
         {
             email: body.email,
             nickname: body.nickname,
@@ -28,7 +30,7 @@ export async function postSignUp(body) {
 
 export async function postLogin(body) {
     const response = await axios.post(
-        `http://localhost:8080/api/auth/login`,
+        `${BASE_URL}/auth/login`,
         {
             email: body.email,
             password: body.password
@@ -39,14 +41,14 @@ export async function postLogin(body) {
 
 export async function getNaverBookSearch(title) {
     const response = await axios.get(
-        `http://localhost:8080/api/naver/${title}`
+        `${BASE_URL}/naver/${title}`
     );
     return response.data;
 }
 
 export async function postBookRegister(data, token) {
     const response = await axios.post(
-        `http://localhost:8080/api/books`,
+        `${BASE_URL}/books`,
         data,
         {
             headers: {
@@ -59,7 +61,7 @@ export async function postBookRegister(data, token) {
 
 export async function postRequestRent(data) {
     const response = await axios.post(
-        `http://localhost:8080/api/books/${data.id}`, {
+        `${BASE_URL}/books/${data.id}`, {
             requestMessage: data.lentMessage
         }
         ,
@@ -74,7 +76,7 @@ export async function postRequestRent(data) {
 
 export async function getBooksByUser(token) {
     const response = await axios.get(
-        `http://localhost:8080/api/books/me`,
+        `${BASE_URL}/books/me`,
         {
             headers: {
                 "Access-Control-Allow-Origin": "*",
@@ -86,7 +88,7 @@ export async function getBooksByUser(token) {
 
 export async function getLentBooksByUser(token) {
     const response = await axios.get(
-        `http://localhost:8080/api/books/me/lent`,
+        `${BASE_URL}/books/me/lent`,
         {
             headers: {
                 "Access-Control-Allow-Origin": "*",
@@ -98,7 +100,7 @@ export async function getLentBooksByUser(token) {
 
 export async function getRequestBooksByUser(token) {
     const response = await axios.get(
-        `http://localhost:8080/api/books/client`,
+        `${BASE_URL}/books/client`,
         {
             headers: {
                 "Access-Control-Allow-Origin": "*",
@@ -110,7 +112,7 @@ export async function getRequestBooksByUser(token) {
 
 export async function postAllowOrDenyRent(token, id, allowOrDeny) {
     const response = await axios.post(
-        `http://localhost:8080/api/books/${id}/lents`,
+        `${BASE_URL}/books/${id}/lents`,
         {
             allowOrDeny: allowOrDeny
         },
@@ -125,7 +127,7 @@ export async function postAllowOrDenyRent(token, id, allowOrDeny) {
 
 export async function putUpdate(token, id, location, detailMessage) {
     const response = await axios.put(
-        `http://localhost:8080/api/books/me/${id}`,
+        `${BASE_URL}/books/me/${id}`,
         {
             location: location,
             detailMessage: detailMessage
@@ -141,7 +143,7 @@ export async function putUpdate(token, id, location, detailMessage) {
 
 export async function deleteBook(token, id) {
     const response = await axios.delete(
-        `http://localhost:8080/api/books/${id}`,
+        `${BASE_URL}/books/${id}`,
         {
             headers: {
                 "Access-Control-Allow-Origin": "*",
