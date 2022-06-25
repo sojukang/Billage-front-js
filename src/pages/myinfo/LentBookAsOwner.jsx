@@ -27,7 +27,6 @@ export const MyInfoButton = withStyles({
     },
 })(Button);
 
-
 export const MobileMyInfoButton = withStyles({
     root: {
         width: "6rem",
@@ -41,6 +40,7 @@ export const MobileMyInfoButton = withStyles({
         fontWeight: "bold"
     },
 })(Button);
+
 
 function LentBookAsOwner({id, title, imageUrl, location, lentMessage, detailMessage}) {
     const user = useSelector(state => state);

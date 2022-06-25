@@ -78,7 +78,7 @@ function BookSearch() {
                     <UserInput
                         type="title"
                         minLength="2"
-                        width="23rem"
+                        width="25rem"
                         placeholder="책 제목을 입력해주세요👍"
                         name="title"
                         required
