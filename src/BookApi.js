@@ -1,22 +1,24 @@
 import axios from "axios";
 
+const BASE_URL = "http://54.180.124.23:8080"
+
 export async function getBooks() {
     const response = await axios.get(
-        "http://localhost:8080/api/books"
+        `${BASE_URL}/api/books`
     );
     return response.data;
 }
 
 export async function getBook(id) {
     const response = await axios.get(
-        `http://localhost:8080/api/books/${id}`
+        `${BASE_URL}/api/books/${id}`
     );
     return response.data;
 }
 
 export async function postSignUp(body) {
     const response = await axios.post(
-        `http://localhost:8080/api/members/`,
+        `${BASE_URL}/api/members/`,
         {
             email: body.email,
             nickname: body.nickname,
@@ -28,7 +30,7 @@ export async function postSignUp(body) {
 
 export async function postLogin(body) {
     const response = await axios.post(
-        `http://localhost:8080/api/auth/login`,
+        `${BASE_URL}/api/auth/login`,
         {
             email: body.email,
             password: body.password
@@ -39,14 +41,14 @@ export async function postLogin(body) {
 
 export async function getNaverBookSearch(title) {
     const response = await axios.get(
-        `http://localhost:8080/api/naver/${title}`
+        `${BASE_URL}/api/naver/${title}`
     );
     return response.data;
 }
 
 export async function postBookRegister(data, token) {
     const response = await axios.post(
-        `http://localhost:8080/api/books`,
+        `${BASE_URL}/api/books`,
         data,
         {
             headers: {
@@ -59,7 +61,7 @@ export async function postBookRegister(data, token) {
 
 export async function postRequestBorrowing(data) {
     const response = await axios.post(
-        `http://localhost:8080/api/books/${data.id}`, {}
+        `${BASE_URL}/api/books/${data.id}`, {}
         ,
         {
             headers: {
