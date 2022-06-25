@@ -48,7 +48,7 @@ export const MobileBookContainer = styled.div`
   border-radius: 8px;
 
   cursor: pointer;
-  margin: 2em 0.2em 2em 0.2em;
+  margin: 2em 2em 2em 2em;
 
   :hover {
     box-shadow: 0 0 10px 0 #dddddd;

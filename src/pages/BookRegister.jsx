@@ -10,7 +10,7 @@ import {SelectButton} from "./BookSearch";
 
 const styles = {
     div: {
-        height: "50vh",
+        height: "80vh",
         display: "flex",
         alignItems: "center",
         marginBottom: "10vh"

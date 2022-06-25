@@ -48,7 +48,7 @@ function LentBookListAsClient() {
                             <LentBook
                                 key={book.id}
                                 id={book.id}
-                                nickname={book.nickname}
+                                nickname={book.ownerNickname}
                                 title={book.title}
                                 detailMessage={book.detailMessage}
                                 lentMessage={book.requestMessage}
@@ -67,7 +67,7 @@ function LentBookListAsClient() {
                                 key={book.id}
                                 id={book.id}
                                 title={book.title}
-                                nickname={book.nickname}
+                                nickname={book.ownerNickname}
                                 detailMessage={book.detailMessage}
                                 status={book.status}
                                 lentMessage={book.requestMessage}
