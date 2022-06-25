@@ -2,6 +2,8 @@ import {BookContainer, BookInfos} from "../../components/BookItem";
 import styled from "styled-components";
 import React from "react";
 import {Button, withStyles} from "@material-ui/core";
+import {useSelector} from "react-redux";
+import {putReturning} from "../../BookApi";
 
 export const BookImage = styled.div`
   align-self: center;
@@ -24,7 +26,22 @@ export const MyInfoButton = withStyles({
     },
 })(Button);
 
-function MyInfoBookContainer({id, title, imageUrl, location, lentMessage}) {
+function LentBookAsOwner({id, title, imageUrl, location, lentMessage, detailMessage}) {
+    const user = useSelector(state => state);
+
+    function returningRequest(token) {
+        if (!token) {
+            return
+        }
+        putReturning(token, id)
+            .then((response) => {
+                alert("반납 승인하였습니다🙆.")
+                window.location.reload();
+            }).catch((error) => {
+            console.log(error.response.data.message)
+        })
+    }
+
     return (
         <BookContainer>
             <BookImage>
@@ -33,8 +50,13 @@ function MyInfoBookContainer({id, title, imageUrl, location, lentMessage}) {
             <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
             <BookInfos>책 위치: {location}</BookInfos>
             <BookInfos>요청 메시지: {lentMessage}</BookInfos>
+            <div>
+                <MyInfoButton onClick={() => returningRequest(user.token)}>
+                    반납승인🙆
+                </MyInfoButton>
+            </div>
         </BookContainer>
     )
 }
 
-export default MyInfoBookContainer;
+export default LentBookAsOwner;

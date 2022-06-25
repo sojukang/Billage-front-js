@@ -1,6 +1,6 @@
 import {BookContainer, BookInfos} from "../../components/BookItem";
 import React, {useEffect} from "react";
-import {BookImage, MyInfoButton} from "./MyInfoBookContainer";
+import {BookImage, MyInfoButton} from "./LentBookAsOwner";
 import {postAllowOrDenyRent} from "../../BookApi";
 import {useSelector} from "react-redux";
 
