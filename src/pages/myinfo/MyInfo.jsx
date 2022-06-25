@@ -122,9 +122,11 @@ function MyInfo() {
                             <LentBook
                                 key={book.id}
                                 id={book.id}
+                                nickname={book.nickname}
                                 title={book.title}
                                 detailMessage={book.detailMessage}
                                 lentMessage={book.requestMessage}
+                                status={book.status}
                                 imageUrl={book.imageUrl}
                                 location={book.location}
                             />
@@ -139,7 +141,9 @@ function MyInfo() {
                                 key={book.id}
                                 id={book.id}
                                 title={book.title}
+                                nickname={book.nickname}
                                 detailMessage={book.detailMessage}
+                                status={book.status}
                                 lentMessage={book.requestMessage}
                                 imageUrl={book.imageUrl}
                                 location={book.location}
