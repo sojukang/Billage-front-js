@@ -112,8 +112,8 @@ function BookItem({id, nickname, title, imageUrl, detailMessage, lentMessage, lo
                             style={styles.img} alt={"Book"}/>
                         <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
                         <BookInfos>주인: {nickname}</BookInfos>
-                        <BookInfos>위치: {location}</BookInfos>
-                        <BookInfos>메시지: {detailMessage}</BookInfos>
+                        <BookInfos>책 위치: {location}</BookInfos>
+                        <BookInfos>남긴 말: {detailMessage}</BookInfos>
                     </div>
                 </BookContainer>
             </Default>
@@ -127,8 +127,8 @@ function BookItem({id, nickname, title, imageUrl, detailMessage, lentMessage, lo
                             style={styles.img} alt={"Book"}/>
                         <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
                         <BookInfos>주인: {nickname}</BookInfos>
-                        <BookInfos>위치: {location}</BookInfos>
-                        <BookInfos>메시지: {detailMessage}</BookInfos>
+                        <BookInfos>책 위치: {location}</BookInfos>
+                        <BookInfos>남긴 말: {detailMessage}</BookInfos>
                     </div>
                 </MobileBookContainer>
             </Mobile>

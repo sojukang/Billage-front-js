@@ -14,7 +14,7 @@ function LentBook({id, title, nickname, imageUrl, location, detailMessage, lentM
                     <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
                     <BookInfos>주인: {nickname}</BookInfos>
                     <BookInfos>책 위치: {location}</BookInfos>
-                    <BookInfos>상세 메시지: {detailMessage}</BookInfos>
+                    <BookInfos>남긴 말: {detailMessage}</BookInfos>
                 </BookContainer>
             </Default>
 
@@ -26,7 +26,7 @@ function LentBook({id, title, nickname, imageUrl, location, detailMessage, lentM
                     <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
                     <BookInfos>주인: {nickname}</BookInfos>
                     <BookInfos>책 위치: {location}</BookInfos>
-                    <BookInfos>상세 메시지: {detailMessage}</BookInfos>
+                    <BookInfos>남긴 말: {detailMessage}</BookInfos>
                 </MobileBookContainer>
             </Mobile>
         </>

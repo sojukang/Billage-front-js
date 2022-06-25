@@ -4,18 +4,20 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {LogoutUser} from "../reducers/User";
 
+const themeColor = "#87CEEB"
+
 const styles = {
     div: {
         display: "flex",
         justifyContent: "space-between",
-        backgroundColor: 'skyblue',
+        backgroundColor: `${themeColor}`,
         height: "3em",
         alignItems: "center",
         boxShadow: "0px 0px 20px 0px #A8A8A8FF"
     },
 
     button: {
-        backgroundColor: 'skyblue',
+        backgroundColor: `${themeColor}`,
         fontSize: "1rem",
     },
 

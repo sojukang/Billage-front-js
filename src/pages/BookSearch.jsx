@@ -23,7 +23,8 @@ export const SearchButton = withStyles({
         marginLeft: "2rem",
         width: "7rem",
         height: "3rem",
-        backgroundColor: "#efd7d7",
+        backgroundColor: "#5FB4D9",
+        color: "#EDF9FE"
     },
 })(Button);
 
@@ -31,7 +32,8 @@ export const SelectButton = withStyles({
     root: {
         width: "5rem",
         height: "3rem",
-        backgroundColor: "#efd7d7",
+        backgroundColor: "#5FB4D9",
+        color: "#EDF9FE"
     },
 })(Button);
 
