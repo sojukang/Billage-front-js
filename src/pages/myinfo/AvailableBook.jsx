@@ -14,7 +14,7 @@ function AvailableBook({id, title, imageUrl, nickname, location, detailMessage, 
                     </BookImage>
                     <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
                     <BookInfos>책 위치: {location}</BookInfos>
-                    <BookInfos>상세 메시지: {detailMessage}</BookInfos>
+                    <BookInfos>남긴 말: {detailMessage}</BookInfos>
                     <div>
                         <Link to={`/books/me/${id}`}
                               state={{

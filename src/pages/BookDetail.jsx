@@ -11,8 +11,9 @@ import Header from "../components/Header";
 export const StyledButton = withStyles({
     root: {
         width: "24rem",
-        backgroundColor: "#efd7d7",
-        marginTop: "1rem"
+        backgroundColor: "#5FB4D9",
+        marginTop: "1rem",
+        color: "#EDF9FE"
     },
 })(Button);
 
