@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import UserInput from "../components/common/userinput/UserInput";
 import styled from "styled-components";
 import {Button, withStyles} from "@material-ui/core";
+import {Default, Mobile} from "../components/common/Mobile";
 
 const SearchBox = styled.main`
   display: flex;
@@ -72,11 +73,30 @@ function BookSearch() {
     return (
         <>
             <Header/>
+            <Default>
+                <SearchBox>
+                    <UserInput
+                        type="title"
+                        minLength="2"
+                        width="23rem"
+                        placeholder="책 제목을 입력해주세요👍"
+                        name="title"
+                        required
+                        onChange={onChangeSearchTitle}
+                    />
+                    <div style={styles.div}>
+                        <SearchButton
+                            onClick={fetchSearchBooks}>
+                            검색하기🔍
+                        </SearchButton>
+                    </div>
+                </SearchBox>
+            </Default>
             <SearchBox>
                 <UserInput
                     type="title"
                     minLength="2"
-                    width="23rem"
+                    width="12rem"
                     placeholder="책 제목을 입력해주세요👍"
                     name="title"
                     required
@@ -89,6 +109,9 @@ function BookSearch() {
                     </SearchButton>
                 </div>
             </SearchBox>
+            <Mobile>
+
+            </Mobile>
             <div style={styles.bookItems}>
                 {bookItems.map((book) => (
                     <SearchBookItem imageUrl={book.image} title={book.title}/>
