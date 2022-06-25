@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://54.180.124.23:8080/api"
+const BASE_URL = "ip-172-31-33-189.ap-northeast-2.compute.internal:8080/api"
 
 export async function getBooks() {
     const response = await axios.get(
