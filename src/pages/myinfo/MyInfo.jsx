@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {getBooksByUser, getLentBooksByUser, getRequestBooksByUser} from "../../BookApi";
 import styled from "styled-components";
-import MyInfoBookContainer from "./MyInfoBookContainer";
+import LentBookAsOwner from "./LentBookAsOwner";
 import PendingBook from "./PendingBook";
 import AvailableBook from "./AvailableBook";
 import Header from "../../components/Header";
@@ -183,11 +183,12 @@ function MyInfo() {
                 <div align="center">
                     <CategoryName>빌려준 책🤝</CategoryName>
                     {unavailables.length > 0 ? unavailables.map((book) => (
-                            <MyInfoBookContainer
+                            <LentBookAsOwner
                                 key={book.id}
                                 id={book.id}
                                 title={book.title}
                                 lentMessage={book.requestMessage}
+                                detailMessage={book.detailMessage}
                                 imageUrl={book.imageUrl}
                                 location={book.location}
                             />

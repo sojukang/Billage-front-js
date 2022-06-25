@@ -141,6 +141,19 @@ export async function putUpdate(token, id, location, detailMessage) {
     return response;
 }
 
+export async function putReturning(token, id) {
+    const response = await axios.put(
+        `${BASE_URL}/books/${id}`,
+        {},
+        {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer ${token}`,
+            },
+        });
+    return response;
+}
+
 export async function deleteBook(token, id) {
     const response = await axios.delete(
         `${BASE_URL}/books/${id}`,

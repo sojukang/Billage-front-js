@@ -1,6 +1,6 @@
 import {BookContainer, BookInfos} from "../../components/BookItem";
 import React from "react";
-import {BookImage} from "./MyInfoBookContainer";
+import {BookImage} from "./LentBookAsOwner";
 
 function LentBook({id, title, imageUrl, location, detailMessage, lentMessage}) {
     return (

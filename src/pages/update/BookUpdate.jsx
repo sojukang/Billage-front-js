@@ -5,7 +5,7 @@ import {StyledButton} from "../BookDetail";
 import {useSelector} from "react-redux";
 import {deleteBook, putUpdate} from "../../BookApi";
 import {useLocation, useNavigate} from "react-router-dom";
-import {BookImage} from "../myinfo/MyInfoBookContainer";
+import {BookImage} from "../myinfo/LentBookAsOwner";
 import Header from "../../components/Header";
 import {ContentsBox} from "../ContentsBox";
 
