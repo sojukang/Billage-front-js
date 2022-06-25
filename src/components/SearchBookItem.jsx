@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
 import {SelectButton} from "../pages/BookSearch";
+import {Default, Mobile} from "./common/Mobile";
 
 const styles = {
     div: {
@@ -20,30 +21,65 @@ const styles = {
 
     title: {
         marginTop: "auto",
-        marginLeft: "auto",
-        marginRight: "auto",
+        marginLeft: "1rem",
+        marginRight: "1rem",
         marginBottom: "auto",
         width: "24em"
+    },
+
+    mobileTitle: {
+        marginTop: "auto",
+        marginLeft: "1rem",
+        marginRight: "1rem",
+        marginBottom: "auto",
+        width: "12em"
+    },
+
+    selectButton: {
+        margin: "auto"
     }
 }
 
 function SearchBookItem({imageUrl, title}) {
     return (
-        <div style={styles.div}>
-            <img src={imageUrl} alt={"hi"}/>
-            <p style={styles.title}>
-                <div
-                    dangerouslySetInnerHTML={{__html: title}}
-                />
-            </p>
-            <Link
-                to={"/books/register"}
-                state={{imageUrl: imageUrl, title: title}}
-            >
-                <SelectButton
-                >선택하기</SelectButton>
-            </Link>
-        </div>
+        <>
+            <Default>
+                <div style={styles.div}>
+                    <img src={imageUrl} alt={"hi"}/>
+                    <p style={styles.title}>
+                        <div
+                            dangerouslySetInnerHTML={{__html: title}}
+                        />
+                    </p>
+                    <Link
+                        style={styles.selectButton}
+                        to={"/books/register"}
+                        state={{imageUrl: imageUrl, title: title}}
+                    >
+                        <SelectButton>선택하기</SelectButton>
+                    </Link>
+                </div>
+            </Default>
+
+            <Mobile>
+                <div style={styles.div}>
+                    <img src={imageUrl} alt={"hi"}/>
+                    <p style={styles.mobileTitle}>
+                        <div
+                            dangerouslySetInnerHTML={{__html: title}}
+                        />
+                    </p>
+                    <Link
+                        style={styles.selectButton}
+                        to={"/books/register"}
+                        state={{imageUrl: imageUrl, title: title}}
+                    >
+                        <SelectButton>선택하기</SelectButton>
+                    </Link>
+                </div>
+            </Mobile>
+
+        </>
     )
 }
 

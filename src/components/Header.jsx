@@ -72,7 +72,10 @@ function Header() {
                         <Button id={"bookRegister"} style={styles.button}>책 등록</Button>
                     </Link>
                     <Link to={"/me"}>
-                        <Button id={"info"} style={styles.button}>책 관리</Button>
+                        <Button id={"info"} style={styles.button}>등록한 책</Button>
+                    </Link>
+                    <Link to={"/me/client"}>
+                        <Button id={"info"} style={styles.button}>빌린 책</Button>
                     </Link>
                 </div>
             }

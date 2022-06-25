@@ -2,11 +2,12 @@ import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {getBooksByUser, getLentBooksByUser, getRequestBooksByUser} from "../../BookApi";
 import styled from "styled-components";
-import LentBookAsOwner from "./LentBookAsOwner";
+import LentBookAsOwner, {MyInfoButton} from "./LentBookAsOwner";
 import PendingBook from "./PendingBook";
 import AvailableBook from "./AvailableBook";
 import Header from "../../components/Header";
 import LentBook from "./LentBook";
+import {Button, withStyles} from "@material-ui/core";
 
 export const CategoryBox = styled.main`
   justify-content: center;
@@ -18,7 +19,7 @@ export const CategoryBox = styled.main`
   border-top: 1px solid #dddddd;
 `;
 
-const CategoryName = styled.div`
+export const CategoryName = styled.div`
   width: 24rem;
   height: 2rem;
   display: flex;
@@ -29,20 +30,32 @@ const CategoryName = styled.div`
   border-radius: 8px;
 `;
 
-const NoContentMessage = styled.div`
+export const NoContentMessage = styled.div`
   margin-top: 2rem;
   margin-bottom: 2rem;
 `;
+
+const GoBooksAsClientButton = withStyles({
+    root: {
+        width: "7rem",
+        height: "2rem",
+        display: "inline-block",
+        marginTop: "1em",
+        marginLeft: "2.5em",
+        marginRight: "2.5em",
+        backgroundColor: "#959595",
+        color: "#494848",
+        fontWeight: "bold"
+    },
+})(Button);
 
 function MyInfo() {
     const user = useSelector(state => state);
     const [bookItems, setBookItems] = useState(null);
     const [lentBookItems, setLentBookItems] = useState(null);
-    const [BookAsClientItems, setBookAsClientItems] = useState(null);
 
     useEffect(() => {
         getBooks(user.token);
-        getClientRequest(user.token);
         getLentBooks(user.token);
     }, [user])
 
@@ -70,20 +83,7 @@ function MyInfo() {
         })
     }
 
-    function getClientRequest(token) {
-        if (!token) {
-            return
-        }
-        getRequestBooksByUser(token)
-            .then((response) => {
-                setBookAsClientItems(response)
-            }).catch((error) => {
-            console.log(error.response.data.message)
-        })
-    }
 
-    const requests = [];
-    const lentBooks = [];
 
     let availables = [];
     const pendings = [];
@@ -102,57 +102,10 @@ function MyInfo() {
         availables = bookItems.filter(book => book.status === "AVAILABLE");
     }
 
-    if (BookAsClientItems) {
-        for (const key in BookAsClientItems) {
-            if (BookAsClientItems[key].status === "REQUEST") {
-                requests.push(BookAsClientItems[key]);
-            } else if (BookAsClientItems[key].status === "LENT") {
-                lentBooks.push(BookAsClientItems[key])
-            }
-        }
-    }
-
     return (
         <>
             <Header/>
             <CategoryBox>
-                <div align="center">
-                    <CategoryName>빌림 요청한 책👉</CategoryName>
-                    {requests.length > 0 ? requests.map((book) => (
-                            <LentBook
-                                key={book.id}
-                                id={book.id}
-                                nickname={book.nickname}
-                                title={book.title}
-                                detailMessage={book.detailMessage}
-                                lentMessage={book.requestMessage}
-                                status={book.status}
-                                imageUrl={book.imageUrl}
-                                location={book.location}
-                            />
-                        )) :
-                        <NoContentMessage>빌림 요청 한 책이 없어요😭</NoContentMessage>
-                    }
-                </div>
-                <div align="center">
-                    <CategoryName>빌린 책👍</CategoryName>
-                    {lentBooks.length > 0 ? lentBooks.map((book) => (
-                            <LentBook
-                                key={book.id}
-                                id={book.id}
-                                title={book.title}
-                                nickname={book.nickname}
-                                detailMessage={book.detailMessage}
-                                status={book.status}
-                                lentMessage={book.requestMessage}
-                                imageUrl={book.imageUrl}
-                                location={book.location}
-                            />
-                        )) :
-                        <NoContentMessage>아직 빌린 책이 없어요😭</NoContentMessage>
-                    }
-                </div>
-                <hr/>
                 <div align="center">
                     <CategoryName>빌림 요청 온 책🙏</CategoryName>
                     {pendings.length > 0 ? pendings.map((book) => (

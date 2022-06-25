@@ -10,6 +10,7 @@ import SignUp from "./pages/signup/SignUp";
 import Login from "./pages/login/Login";
 import MyInfo from "./pages/myinfo/MyInfo";
 import BookUpdate from "./pages/update/BookUpdate";
+import LentBookListAsClient from "./pages/myinfo/LentBookListAsClient";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/me" element={<MyInfo/>}/>
+                <Route path="/me/client" element={<LentBookListAsClient/>}/>
                 <Route path="/books/me/*" element={<BookUpdate/>}/>
                 <Route path="/books/search" element={<BookSearch/>}/>
                 <Route path="/books/register" element={<BookRegister/>}/>
