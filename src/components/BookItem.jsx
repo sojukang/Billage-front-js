@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
+import {Default, Mobile} from "./common/Mobile";
 
 const styles = {
     div: {
@@ -37,6 +38,23 @@ export const BookContainer = styled.div`
   }
 `;
 
+export const MobileBookContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  height: 24rem;
+  padding: 2em 0.5em 2em 0.5em;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+
+  cursor: pointer;
+  margin: 2em 0.2em 2em 0.2em;
+
+  :hover {
+    box-shadow: 0 0 10px 0 #dddddd;
+  }
+`;
+
 export const BookInfos = styled.p`
   overflow: hidden;
   white-space: nowrap;
@@ -53,12 +71,13 @@ export const BookStatus = styled.div`
   color: aliceblue;
   width: 5rem;
   height: 2rem;
+
   :hover {
     box-shadow: 0 0 10px 0 #dddddd;
   }
 `;
 
-function BookItem({id, nickname, title, imageUrl, detailMessage, location, status}) {
+function BookItem({id, nickname, title, imageUrl, detailMessage, lentMessage, location, status}) {
     const navigate = useNavigate();
     const toBookDetail = () => {
         if (status !== "AVAILABLE") {
@@ -72,8 +91,10 @@ function BookItem({id, nickname, title, imageUrl, detailMessage, location, statu
     function handleStatus(status) {
         switch (status) {
             case "PENDING":
+            case "REQUEST":
                 return "승낙 대기";
             case "UNAVAILABLE":
+            case "LENT":
                 return "대여 중";
             default:
                 return "대여 가능";
@@ -81,18 +102,37 @@ function BookItem({id, nickname, title, imageUrl, detailMessage, location, statu
     }
 
     return (
-        <BookContainer>
-            <div onClick={toBookDetail}>
-                <BookStatus>{handleStatus(status)}</BookStatus>
-                <img
-                    src={imageUrl}
-                    style={styles.img} alt={"Book"}/>
-                <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
-                <BookInfos>주인: {nickname}</BookInfos>
-                <BookInfos>위치: {location}</BookInfos>
-                <BookInfos>메시지: {detailMessage}</BookInfos>
-            </div>
-        </BookContainer>
+        <>
+            <Default>
+                <BookContainer>
+                    <div onClick={toBookDetail}>
+                        <BookStatus>{handleStatus(status)}</BookStatus>
+                        <img
+                            src={imageUrl}
+                            style={styles.img} alt={"Book"}/>
+                        <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
+                        <BookInfos>주인: {nickname}</BookInfos>
+                        <BookInfos>위치: {location}</BookInfos>
+                        <BookInfos>메시지: {detailMessage}</BookInfos>
+                    </div>
+                </BookContainer>
+            </Default>
+
+            <Mobile>
+                <MobileBookContainer>
+                    <div onClick={toBookDetail}>
+                        <BookStatus>{handleStatus(status)}</BookStatus>
+                        <img
+                            src={imageUrl}
+                            style={styles.img} alt={"Book"}/>
+                        <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
+                        <BookInfos>주인: {nickname}</BookInfos>
+                        <BookInfos>위치: {location}</BookInfos>
+                        <BookInfos>메시지: {detailMessage}</BookInfos>
+                    </div>
+                </MobileBookContainer>
+            </Mobile>
+        </>
     )
 }
 

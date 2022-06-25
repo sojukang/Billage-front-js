@@ -92,25 +92,25 @@ function BookSearch() {
                     </div>
                 </SearchBox>
             </Default>
-            <SearchBox>
-                <UserInput
-                    type="title"
-                    minLength="2"
-                    width="12rem"
-                    placeholder="책 제목을 입력해주세요👍"
-                    name="title"
-                    required
-                    onChange={onChangeSearchTitle}
-                />
-                <div style={styles.div}>
-                    <SearchButton
-                        onClick={fetchSearchBooks}>
-                        검색하기🔍
-                    </SearchButton>
-                </div>
-            </SearchBox>
             <Mobile>
 
+                <SearchBox>
+                    <UserInput
+                        type="title"
+                        minLength="2"
+                        width="12rem"
+                        placeholder="책 제목을 입력해주세요👍"
+                        name="title"
+                        required
+                        onChange={onChangeSearchTitle}
+                    />
+                    <div style={styles.div}>
+                        <SearchButton
+                            onClick={fetchSearchBooks}>
+                            검색하기🔍
+                        </SearchButton>
+                    </div>
+                </SearchBox>
             </Mobile>
             <div style={styles.bookItems}>
                 {bookItems.map((book) => (

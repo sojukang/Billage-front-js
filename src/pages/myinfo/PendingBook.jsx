@@ -1,8 +1,9 @@
-import {BookContainer, BookInfos} from "../../components/BookItem";
-import React, {useEffect} from "react";
-import {BookImage, MyInfoButton} from "./LentBookAsOwner";
+import BookItem, {BookContainer, BookInfos, MobileBookContainer} from "../../components/BookItem";
+import React from "react";
+import {BookImage, MobileMyInfoButton, MyInfoButton} from "./LentBookAsOwner";
 import {postAllowOrDenyRent} from "../../BookApi";
 import {useSelector} from "react-redux";
+import {Default, Mobile} from "../../components/common/Mobile";
 
 function PendingBook({id, title, imageUrl, location, lentMessage}) {
     const user = useSelector(state => state);
@@ -34,23 +35,46 @@ function PendingBook({id, title, imageUrl, location, lentMessage}) {
     }
 
     return (
-        <BookContainer>
-            <BookImage>
-                <img src={imageUrl} alt={"Hi"}/>
-            </BookImage>
-            <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
-            <BookInfos>책 위치: {location}</BookInfos>
-            <BookInfos>요청 메시지: {lentMessage}</BookInfos>
-            <div>
-                <MyInfoButton onClick={() => denyRequest(user.token)}>
-                    거절❌
-                </MyInfoButton>
-                <MyInfoButton onClick={() => allowRequest(user.token)}>
-                    승낙⭕
-                </MyInfoButton>
-            </div>
+        <>
+            <Default>
+                <BookContainer>
+                    <BookImage>
+                        <img src={imageUrl} alt={"Hi"}/>
+                    </BookImage>
+                    <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
+                    <BookInfos>책 위치: {location}</BookInfos>
+                    <BookInfos>요청 메시지: {lentMessage}</BookInfos>
+                    <div>
+                        <MyInfoButton onClick={() => denyRequest(user.token)}>
+                            거절❌
+                        </MyInfoButton>
+                        <MyInfoButton onClick={() => allowRequest(user.token)}>
+                            승낙⭕
+                        </MyInfoButton>
+                    </div>
 
-        </BookContainer>
+                </BookContainer>
+            </Default>
+
+            <Mobile>
+                <MobileBookContainer>
+                    <BookImage>
+                        <img src={imageUrl} alt={"Hi"}/>
+                    </BookImage>
+                    <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
+                    <BookInfos>책 위치: {location}</BookInfos>
+                    <BookInfos>요청 메시지: {lentMessage}</BookInfos>
+                    <div>
+                        <MobileMyInfoButton onClick={() => denyRequest(user.token)}>
+                            거절❌
+                        </MobileMyInfoButton>
+                        <MobileMyInfoButton onClick={() => allowRequest(user.token)}>
+                            승낙⭕
+                        </MobileMyInfoButton>
+                    </div>
+                </MobileBookContainer>
+            </Mobile>
+        </>
     )
 }
 
