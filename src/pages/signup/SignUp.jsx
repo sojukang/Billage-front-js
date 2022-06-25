@@ -1,6 +1,5 @@
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-
 import {RegisterButtonContainer, RegisterInputContainer, RegisterPageContainer, StyledButton,} from "./styled";
 import {useInputHandler} from "../UserInputHandler";
 import {RANGE, registerValidator} from "../../validator/Validator";
@@ -9,6 +8,9 @@ import UserInput from "../../components/common/userinput/UserInput";
 import {postSignUp} from "../../BookApi";
 import {ContentsBox} from "../ContentsBox";
 import Header from "../../components/Header";
+import {Default, Mobile, MobileStyledButton} from "../../components/common/Mobile";
+
+
 
 const initialUserInfo = {
     email: "",
@@ -72,82 +74,162 @@ function SignUp() {
         <>
             <Header/>
             <ContentsBox>
-                <RegisterPageContainer>
-                    <UserForm onSubmit={registerUserInfo}>
-                        <RegisterInputContainer>
-                            <UserInput
-                                type="email"
-                                minLength={RANGE.EMAIL_MIN_LENGTH}
-                                maxLength={RANGE.EMAIL_MAX_LENGTH}
-                                width="38rem"
-                                placeholder="이메일을 입력해주세요"
-                                name="email"
-                                value={userInfo.email}
-                                onChange={handleChangeInput}
-                                required
-                                autoFocus
-                                errorMessage={errorMessage.email}
-                            />
-                        </RegisterInputContainer>
-                        <RegisterInputContainer>
-                            <UserInput
-                                type="text"
-                                minLength={RANGE.USERNAME_MIN_LENGTH}
-                                maxLength={RANGE.USERNAME_MAX_LENGTH}
-                                width="38rem"
-                                placeholder="닉네임을 입력해주세요"
-                                name="nickname"
-                                value={userInfo.nickname}
-                                onChange={handleChangeInput}
-                                required
-                                errorMessage={errorMessage.nickname}
-                            />
-                        </RegisterInputContainer>
-                        <RegisterInputContainer>
-                            <UserInput
-                                type="password"
-                                minLength={RANGE.PW_MIN_LENGTH}
-                                maxLength={RANGE.PW_MAX_LENGTH}
-                                width="38rem"
-                                placeholder="비밀번호를 입력해주세요"
-                                name="password"
-                                value={userInfo.password}
-                                required
-                                onChange={handleChangeInput}
-                                errorMessage={errorMessage.password}
-                            />
-                        </RegisterInputContainer>
-                        <RegisterInputContainer>
-                            <UserInput
-                                type="password"
-                                minLength={RANGE.PW_MIN_LENGTH}
-                                maxLength={RANGE.PW_MAX_LENGTH}
-                                width="38rem"
-                                placeholder="비밀번호를 다시 한 번 입력해주세요"
-                                name="passwordConfirm"
-                                value={userInfo.passwordConfirm}
-                                required
-                                onChange={handlePasswordConfirmChange}
-                                errorMessage={errorMessage.passwordConfirm}
-                            />
-                        </RegisterInputContainer>
-                        <RegisterButtonContainer>
-                            <StyledButton type="submit">
-                                가입하기
-                            </StyledButton>
-                            <Link to={"/login"}>
-                                <StyledButton>
-                                    로그인
+                <Default>
+                    <RegisterPageContainer>
+                        <UserForm onSubmit={registerUserInfo}>
+                            <RegisterInputContainer>
+                                <UserInput
+                                    type="email"
+                                    minLength={RANGE.EMAIL_MIN_LENGTH}
+                                    maxLength={RANGE.EMAIL_MAX_LENGTH}
+                                    width="38rem"
+                                    placeholder="이메일을 입력해주세요"
+                                    name="email"
+                                    value={userInfo.email}
+                                    onChange={handleChangeInput}
+                                    required
+                                    autoFocus
+                                    errorMessage={errorMessage.email}
+                                />
+                            </RegisterInputContainer>
+                            <RegisterInputContainer>
+                                <UserInput
+                                    type="text"
+                                    minLength={RANGE.USERNAME_MIN_LENGTH}
+                                    maxLength={RANGE.USERNAME_MAX_LENGTH}
+                                    width="38rem"
+                                    placeholder="닉네임을 입력해주세요"
+                                    name="nickname"
+                                    value={userInfo.nickname}
+                                    onChange={handleChangeInput}
+                                    required
+                                    errorMessage={errorMessage.nickname}
+                                />
+                            </RegisterInputContainer>
+                            <RegisterInputContainer>
+                                <UserInput
+                                    type="password"
+                                    minLength={RANGE.PW_MIN_LENGTH}
+                                    maxLength={RANGE.PW_MAX_LENGTH}
+                                    width="38rem"
+                                    placeholder="비밀번호를 입력해주세요"
+                                    name="password"
+                                    value={userInfo.password}
+                                    required
+                                    onChange={handleChangeInput}
+                                    errorMessage={errorMessage.password}
+                                />
+                            </RegisterInputContainer>
+                            <RegisterInputContainer>
+                                <UserInput
+                                    type="password"
+                                    minLength={RANGE.PW_MIN_LENGTH}
+                                    maxLength={RANGE.PW_MAX_LENGTH}
+                                    width="38rem"
+                                    placeholder="비밀번호를 다시 한 번 입력해주세요"
+                                    name="passwordConfirm"
+                                    value={userInfo.passwordConfirm}
+                                    required
+                                    onChange={handlePasswordConfirmChange}
+                                    errorMessage={errorMessage.passwordConfirm}
+                                />
+                            </RegisterInputContainer>
+                            <RegisterButtonContainer>
+                                <StyledButton type="submit">
+                                    가입하기
                                 </StyledButton>
-                            </Link>
-                            <Link to={"/"}>
-                                <StyledButton>
-                                    홈으로
-                                </StyledButton>
-                            </Link>
-                        </RegisterButtonContainer>
-                    </UserForm>
-                </RegisterPageContainer>
+                                <Link to={"/login"}>
+                                    <StyledButton>
+                                        로그인
+                                    </StyledButton>
+                                </Link>
+                                <Link to={"/"}>
+                                    <StyledButton>
+                                        홈으로
+                                    </StyledButton>
+                                </Link>
+                            </RegisterButtonContainer>
+                        </UserForm>
+                    </RegisterPageContainer>
+                </Default>
+                <Mobile>
+                    <RegisterPageContainer>
+                        <UserForm onSubmit={registerUserInfo}>
+                            <RegisterInputContainer>
+                                <UserInput
+                                    type="email"
+                                    minLength={RANGE.EMAIL_MIN_LENGTH}
+                                    maxLength={RANGE.EMAIL_MAX_LENGTH}
+                                    width="18rem"
+                                    placeholder="이메일을 입력해주세요"
+                                    name="email"
+                                    value={userInfo.email}
+                                    onChange={handleChangeInput}
+                                    required
+                                    autoFocus
+                                    errorMessage={errorMessage.email}
+                                />
+                            </RegisterInputContainer>
+                            <RegisterInputContainer>
+                                <UserInput
+                                    type="text"
+                                    minLength={RANGE.USERNAME_MIN_LENGTH}
+                                    maxLength={RANGE.USERNAME_MAX_LENGTH}
+                                    width="18rem"
+                                    placeholder="닉네임을 입력해주세요"
+                                    name="nickname"
+                                    value={userInfo.nickname}
+                                    onChange={handleChangeInput}
+                                    required
+                                    errorMessage={errorMessage.nickname}
+                                />
+                            </RegisterInputContainer>
+                            <RegisterInputContainer>
+                                <UserInput
+                                    type="password"
+                                    minLength={RANGE.PW_MIN_LENGTH}
+                                    maxLength={RANGE.PW_MAX_LENGTH}
+                                    width="18rem"
+                                    placeholder="비밀번호를 입력해주세요"
+                                    name="password"
+                                    value={userInfo.password}
+                                    required
+                                    onChange={handleChangeInput}
+                                    errorMessage={errorMessage.password}
+                                />
+                            </RegisterInputContainer>
+                            <RegisterInputContainer>
+                                <UserInput
+                                    type="password"
+                                    minLength={RANGE.PW_MIN_LENGTH}
+                                    maxLength={RANGE.PW_MAX_LENGTH}
+                                    width="18rem"
+                                    placeholder="비밀번호를 다시 한 번 입력해주세요"
+                                    name="passwordConfirm"
+                                    value={userInfo.passwordConfirm}
+                                    required
+                                    onChange={handlePasswordConfirmChange}
+                                    errorMessage={errorMessage.passwordConfirm}
+                                />
+                            </RegisterInputContainer>
+                            <RegisterButtonContainer>
+                                <MobileStyledButton type="submit">
+                                    가입하기
+                                </MobileStyledButton>
+                                <Link to={"/login"}>
+                                    <MobileStyledButton>
+                                        로그인
+                                    </MobileStyledButton>
+                                </Link>
+                                <Link to={"/"}>
+                                    <MobileStyledButton>
+                                        홈으로
+                                    </MobileStyledButton>
+                                </Link>
+                            </RegisterButtonContainer>
+                        </UserForm>
+                    </RegisterPageContainer>
+                </Mobile>
             </ContentsBox>
         </>
     );

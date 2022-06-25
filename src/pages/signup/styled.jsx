@@ -20,7 +20,7 @@ export const RegisterPageContainer = styled.section`
 
 export const RegisterInputContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 620px;
   align-items: center;
 `;
