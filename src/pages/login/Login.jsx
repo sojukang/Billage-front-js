@@ -43,6 +43,12 @@ function Login() {
         setPassword(e.target.value);
     }
 
+    const handleKeyPress = (e) => {
+        if(e.key === "Enter") {
+            signIn()
+        }
+    }
+
     const signIn = () => {
         postLogin({email, password})
             .then((res) => {
@@ -94,6 +100,7 @@ function Login() {
                                     name="password"
                                     required
                                     onChange={handleChangePassword}
+                                    onKeyPress={handleKeyPress}
                                     errorMessage={errorMessage.password}
                                 />
                             </RegisterInputContainer>
@@ -144,6 +151,7 @@ function Login() {
                                     name="password"
                                     required
                                     onChange={handleChangePassword}
+                                    onKeyPress={handleKeyPress}
                                     errorMessage={errorMessage.password}
                                 />
                             </RegisterInputContainer>

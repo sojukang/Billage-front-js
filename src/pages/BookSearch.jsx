@@ -67,6 +67,12 @@ function BookSearch() {
         setSearchTitle(e.target.value);
     }
 
+    const handleKeyPress = (e) => {
+        if(e.key === "Enter") {
+            fetchSearchBooks();
+        }
+    }
+
     const fetchSearchBooks = async () => {
         const data = await getNaverBookSearch(searchTitle);
         setBookItems(data.items);
@@ -85,6 +91,7 @@ function BookSearch() {
                         name="title"
                         required
                         onChange={onChangeSearchTitle}
+                        onKeyPress={handleKeyPress}
                     />
                     <div style={styles.div}>
                         <SearchButton
@@ -105,6 +112,7 @@ function BookSearch() {
                         name="title"
                         required
                         onChange={onChangeSearchTitle}
+                        onKeyPress={handleKeyPress}
                     />
                     <div style={styles.div}>
                         <SearchButton

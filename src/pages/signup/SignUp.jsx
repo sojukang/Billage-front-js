@@ -61,6 +61,12 @@ function SignUp() {
         comparePassword(e);
     };
 
+    const handleKeyPress = (e) => {
+        if(e.key === "Enter") {
+            requestRegister()
+        }
+    }
+
     const comparePassword = ({target: {value}}) => {
         if (userInfo.password !== value) {
             setErrorMessage((prev) => ({
@@ -131,6 +137,7 @@ function SignUp() {
                                     value={userInfo.passwordConfirm}
                                     required
                                     onChange={handlePasswordConfirmChange}
+                                    onKeyPress={handleKeyPress}
                                     errorMessage={errorMessage.passwordConfirm}
                                 />
                             </RegisterInputContainer>
@@ -209,6 +216,7 @@ function SignUp() {
                                     value={userInfo.passwordConfirm}
                                     required
                                     onChange={handlePasswordConfirmChange}
+                                    onKeyPress={handleKeyPress}
                                     errorMessage={errorMessage.passwordConfirm}
                                 />
                             </RegisterInputContainer>
