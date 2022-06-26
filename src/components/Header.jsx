@@ -46,7 +46,7 @@ function Header() {
         <div style={styles.div}>
             <div>
                 <Link to="/">
-                    <Button style={styles.logo}>Billage</Button>
+                    <Button style={styles.logo}>📖Billage</Button>
                 </Link>
                 {isLogin ?
                     <>

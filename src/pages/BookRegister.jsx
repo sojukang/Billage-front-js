@@ -87,7 +87,7 @@ function BookRegister() {
                         />
                         <SelectButton
                             onClick={postRegister}
-                        >등록</SelectButton>
+                        >등록📚</SelectButton>
                     </div>
                 </div>
             </ContentsBox>

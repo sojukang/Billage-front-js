@@ -61,6 +61,12 @@ function SignUp() {
         comparePassword(e);
     };
 
+    const handleKeyPress = (e) => {
+        if(e.key === "Enter") {
+            requestRegister()
+        }
+    }
+
     const comparePassword = ({target: {value}}) => {
         if (userInfo.password !== value) {
             setErrorMessage((prev) => ({
@@ -83,7 +89,7 @@ function SignUp() {
                                     minLength={RANGE.EMAIL_MIN_LENGTH}
                                     maxLength={RANGE.EMAIL_MAX_LENGTH}
                                     width="38rem"
-                                    placeholder="이메일을 입력해주세요"
+                                    placeholder="알림 메일을 받을 이메일을 입력해주세요"
                                     name="email"
                                     value={userInfo.email}
                                     onChange={handleChangeInput}
@@ -131,6 +137,7 @@ function SignUp() {
                                     value={userInfo.passwordConfirm}
                                     required
                                     onChange={handlePasswordConfirmChange}
+                                    onKeyPress={handleKeyPress}
                                     errorMessage={errorMessage.passwordConfirm}
                                 />
                             </RegisterInputContainer>
@@ -161,7 +168,7 @@ function SignUp() {
                                     minLength={RANGE.EMAIL_MIN_LENGTH}
                                     maxLength={RANGE.EMAIL_MAX_LENGTH}
                                     width="18rem"
-                                    placeholder="이메일을 입력해주세요"
+                                    placeholder="알림 메일을 받을 이메일을 입력해주세요"
                                     name="email"
                                     value={userInfo.email}
                                     onChange={handleChangeInput}
@@ -209,6 +216,7 @@ function SignUp() {
                                     value={userInfo.passwordConfirm}
                                     required
                                     onChange={handlePasswordConfirmChange}
+                                    onKeyPress={handleKeyPress}
                                     errorMessage={errorMessage.passwordConfirm}
                                 />
                             </RegisterInputContainer>
