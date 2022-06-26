@@ -15,17 +15,26 @@ const styles = {
 }
 
 function BookList() {
-    const [bookItems, setBookItems] = useState(null);
+    const [bookItems, setBookItems] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    function compare(a, b) {
+        if ((a.status === "UNAVAILABLE" && b.status !== "UNAVAILABLE") ||
+            (a.status === "PENDING" && b.status === "AVAILABLE")) {
+            return 1;
+        }
+        if (a.status === b.status) {
+            return 0;
+        }
+        return -1;
+    }
 
     useEffect(() => {
         const fetchBookItems = async () => {
             try {
-                // 요청이 시작 할 때에는 error 와 bookItems 를 초기화하고
                 setError(null);
                 setBookItems(null);
-                // loading 상태를 true 로 바꿉니다.
                 setLoading(true);
 
                 const response = await getBooks();
@@ -41,12 +50,12 @@ function BookList() {
 
     if (loading) return <div>로딩중..</div>;
     if (error) return <div>에러가 발생했습니다</div>;
-    if (!bookItems) return null;
+    if (bookItems.length === 0) return null;
 
     return (
         <div style={styles.divParent}>
             <div style={styles.div}>
-                {bookItems.map((book) => (
+                {bookItems.sort(compare).map((book) => (
                     <BookItem key={book.id}
                               id={book.id}
                               nickname={book.nickname}
