@@ -3,6 +3,8 @@ import Button from "./common/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {LogoutUser} from "../reducers/User";
+import BasicMenu from "./common/BasicMenu";
+import {Default, Mobile} from "./common/Mobile";
 
 const themeColor = "#87CEEB"
 
@@ -68,19 +70,25 @@ function Header() {
                     </>
                 }
             </div>
-            {isLogin &&
-                <div>
-                    <Link to={"/books/search"}>
-                        <Button id={"bookRegister"} style={styles.button}>책 등록</Button>
-                    </Link>
-                    <Link to={"/me"}>
-                        <Button id={"info"} style={styles.button}>등록한 책</Button>
-                    </Link>
-                    <Link to={"/me/client"}>
-                        <Button id={"info"} style={styles.button}>빌린 책</Button>
-                    </Link>
-                </div>
-            }
+            <Default>
+                {isLogin &&
+                    <div>
+                        <Link to={"/books/search"}>
+                            <Button id={"bookRegister"} style={styles.button}>책 등록</Button>
+                        </Link>
+                        <Link to={"/me"}>
+                            <Button id={"info"} style={styles.button}>등록한 책</Button>
+                        </Link>
+                        <Link to={"/me/client"}>
+                            <Button id={"info"} style={styles.button}>빌린 책</Button>
+                        </Link>
+                    </div>
+                }
+            </Default>
+
+            <Mobile>
+                {isLogin && <BasicMenu/>}
+            </Mobile>
         </div>
     )
 }
