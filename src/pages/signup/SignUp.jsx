@@ -11,7 +11,6 @@ import Header from "../../components/Header";
 import {Default, Mobile, MobileStyledButton} from "../../components/common/Mobile";
 
 
-
 const initialUserInfo = {
     email: "",
     nickname: "",
@@ -60,12 +59,6 @@ function SignUp() {
         handleChangeInput(e);
         comparePassword(e);
     };
-
-    const handleKeyPress = (e) => {
-        if(e.key === "Enter") {
-            requestRegister()
-        }
-    }
 
     const comparePassword = ({target: {value}}) => {
         if (userInfo.password !== value) {
@@ -137,7 +130,6 @@ function SignUp() {
                                     value={userInfo.passwordConfirm}
                                     required
                                     onChange={handlePasswordConfirmChange}
-                                    onKeyPress={handleKeyPress}
                                     errorMessage={errorMessage.passwordConfirm}
                                 />
                             </RegisterInputContainer>
@@ -216,7 +208,6 @@ function SignUp() {
                                     value={userInfo.passwordConfirm}
                                     required
                                     onChange={handlePasswordConfirmChange}
-                                    onKeyPress={handleKeyPress}
                                     errorMessage={errorMessage.passwordConfirm}
                                 />
                             </RegisterInputContainer>
