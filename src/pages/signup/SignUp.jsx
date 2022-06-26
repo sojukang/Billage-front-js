@@ -83,7 +83,7 @@ function SignUp() {
                                     minLength={RANGE.EMAIL_MIN_LENGTH}
                                     maxLength={RANGE.EMAIL_MAX_LENGTH}
                                     width="38rem"
-                                    placeholder="이메일을 입력해주세요"
+                                    placeholder="알림 메일을 받을 이메일을 입력해주세요"
                                     name="email"
                                     value={userInfo.email}
                                     onChange={handleChangeInput}
@@ -161,7 +161,7 @@ function SignUp() {
                                     minLength={RANGE.EMAIL_MIN_LENGTH}
                                     maxLength={RANGE.EMAIL_MAX_LENGTH}
                                     width="18rem"
-                                    placeholder="이메일을 입력해주세요"
+                                    placeholder="알림 메일을 받을 이메일을 입력해주세요"
                                     name="email"
                                     value={userInfo.email}
                                     onChange={handleChangeInput}

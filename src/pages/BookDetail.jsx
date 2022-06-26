@@ -109,7 +109,7 @@ function BookDetail() {
                             onClick={() => requestRent(id, user, lentMessage)}
                             width="24rem"
                         >
-                            빌림 요청
+                            빌림 요청💌
                         </StyledButton>
                     </div>
                 </div>
