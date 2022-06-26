@@ -25,7 +25,7 @@ export const BookContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 23rem;
-  height: 24rem;
+  height: 26rem;
   padding: 2em 0.5em 2em 0.5em;
   border: 1px solid #dddddd;
   border-radius: 8px;
@@ -42,7 +42,7 @@ export const MobileBookContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 20rem;
-  height: 24rem;
+  height: 26rem;
   padding: 2em 0.5em 2em 0.5em;
   border: 1px solid #dddddd;
   border-radius: 8px;

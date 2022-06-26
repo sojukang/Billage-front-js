@@ -113,6 +113,7 @@ function MyInfo() {
                                 key={book.id}
                                 id={book.id}
                                 title={book.title}
+                                clientNickname={book.clientNickname}
                                 lentMessage={book.requestMessage}
                                 imageUrl={book.imageUrl}
                                 location={book.location}

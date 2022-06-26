@@ -5,7 +5,7 @@ import {postAllowOrDenyRent} from "../../BookApi";
 import {useSelector} from "react-redux";
 import {Default, Mobile} from "../../components/common/Mobile";
 
-function PendingBook({id, title, imageUrl, location, lentMessage}) {
+function PendingBook({id, clientNickname, title, imageUrl, location, lentMessage}) {
     const user = useSelector(state => state);
 
     function denyRequest(token) {
@@ -43,6 +43,7 @@ function PendingBook({id, title, imageUrl, location, lentMessage}) {
                     </BookImage>
                     <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
                     <BookInfos>책 위치: {location}</BookInfos>
+                    <BookInfos>요청: {clientNickname}</BookInfos>
                     <BookInfos>요청 메시지: {lentMessage}</BookInfos>
                     <div>
                         <MyInfoButton onClick={() => denyRequest(user.token)}>
@@ -63,6 +64,7 @@ function PendingBook({id, title, imageUrl, location, lentMessage}) {
                     </BookImage>
                     <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
                     <BookInfos>책 위치: {location}</BookInfos>
+                    <BookInfos>요청: {clientNickname}</BookInfos>
                     <BookInfos>요청 메시지: {lentMessage}</BookInfos>
                     <div>
                         <MobileMyInfoButton onClick={() => denyRequest(user.token)}>
