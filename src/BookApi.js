@@ -1,7 +1,6 @@
 import axios from "axios";
 
-// const BASE_URL = "http://ec2-54-180-124-23.ap-northeast-2.compute.amazonaws.com:8080/api"
-const BASE_URL = "http://localhost:8080/api"
+const BASE_URL = "http://ec2-54-180-124-23.ap-northeast-2.compute.amazonaws.com:8080/api"
 
 export async function getBooks() {
     const response = await axios.get(
