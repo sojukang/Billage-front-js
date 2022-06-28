@@ -34,6 +34,14 @@ function BookUpdate() {
         if (!token) {
             return
         }
+        if (location === '') {
+            location = state.location;
+        }
+
+        if (detailMessage === '') {
+            detailMessage = state.detailMessage;
+        }
+
         putUpdate(token, id, location, detailMessage)
             .then((response) => {
                 alert("수정되었습니다!")
