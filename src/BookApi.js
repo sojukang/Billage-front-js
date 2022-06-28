@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "http://ec2-54-180-124-23.ap-northeast-2.compute.amazonaws.com:8080/api"
+// const BASE_URL = "http://ec2-54-180-124-23.ap-northeast-2.compute.amazonaws.com:8080/api"
+const BASE_URL = "http://localhost:8080/api"
 
 export async function getBooks() {
     const response = await axios.get(
@@ -34,6 +35,16 @@ export async function postLogin(body) {
         {
             email: body.email,
             password: body.password
+        }
+    );
+    return response;
+}
+
+export async function postLoginGithubRequest(body) {
+    const response = await axios.post(
+        `${BASE_URL}/auth/login/github`,
+        {
+            code: body.code,
         }
     );
     return response;
