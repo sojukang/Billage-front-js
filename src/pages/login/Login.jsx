@@ -109,11 +109,11 @@ function Login() {
                                     onClick={signIn}>
                                     로그인
                                 </StyledButton>
-                                <Link to={"/signup"}>
-                                    <StyledButton>
-                                        가입하기
-                                    </StyledButton>
-                                </Link>
+                                <StyledButton>
+                                    <a
+                                        href="https://github.com/login/oauth/authorize?client_id=8d5a7b484e8b5802f868&redirect_uri=http://localhost:3001/login/oauth"
+                                    >GitHub 아이디로 로그인</a>
+                                </StyledButton>
                                 <Link to={"/"}>
                                     <StyledButton>
                                         홈으로
@@ -160,11 +160,6 @@ function Login() {
                                     onClick={signIn}>
                                     로그인
                                 </MobileStyledButton>
-                                <Link to={"/signup"}>
-                                    <MobileStyledButton>
-                                        가입하기
-                                    </MobileStyledButton>
-                                </Link>
                                 <Link to={"/"}>
                                     <MobileStyledButton>
                                         홈으로

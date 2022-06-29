@@ -19,7 +19,10 @@ function BookList() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    function compare(a, b) {
+
+
+
+    function compareStatus(a, b) {
         if ((a.status === "UNAVAILABLE" && b.status !== "UNAVAILABLE") ||
             (a.status === "PENDING" && b.status === "AVAILABLE")) {
             return 1;
@@ -28,6 +31,10 @@ function BookList() {
             return 0;
         }
         return -1;
+    }
+
+    function compareId(a, b) {
+        return b.id - a.id;
     }
 
     useEffect(() => {
@@ -55,7 +62,7 @@ function BookList() {
     return (
         <div style={styles.divParent}>
             <div style={styles.div}>
-                {bookItems.sort(compare).map((book) => (
+                {bookItems.sort(compareId).sort(compareStatus).map((book) => (
                     <BookItem key={book.id}
                               id={book.id}
                               nickname={book.nickname}

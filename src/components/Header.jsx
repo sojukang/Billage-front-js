@@ -61,9 +61,6 @@ function Header() {
                     </>
                     :
                     <>
-                        <Link to="/signup">
-                            <Button id={"register"} style={styles.button}>회원가입</Button>
-                        </Link>
                         <Link to="/login">
                             <Button id={"login"} style={styles.button}>로그인</Button>
                         </Link>

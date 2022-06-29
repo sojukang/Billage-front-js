@@ -39,6 +39,16 @@ export async function postLogin(body) {
     return response;
 }
 
+export async function postLoginGithubRequest(body) {
+    const response = await axios.post(
+        `${BASE_URL}/auth/login/github`,
+        {
+            code: body.code,
+        }
+    );
+    return response;
+}
+
 export async function getNaverBookSearch(title) {
     const response = await axios.get(
         `${BASE_URL}/naver/${title}`
