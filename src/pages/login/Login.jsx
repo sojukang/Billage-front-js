@@ -160,6 +160,11 @@ function Login() {
                                     onClick={signIn}>
                                     로그인
                                 </MobileStyledButton>
+                                <MobileStyledButton>
+                                    <a
+                                        href="https://github.com/login/oauth/authorize?client_id=8d5a7b484e8b5802f868&redirect_uri=http://billage.site/login/oauth"
+                                    >GitHub 아이디로 로그인</a>
+                                </MobileStyledButton>
                                 <Link to={"/"}>
                                     <MobileStyledButton>
                                         홈으로
