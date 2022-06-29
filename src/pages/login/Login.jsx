@@ -111,7 +111,7 @@ function Login() {
                                 </StyledButton>
                                 <StyledButton>
                                     <a
-                                        href="https://github.com/login/oauth/authorize?client_id=8d5a7b484e8b5802f868&redirect_uri=http://localhost:3001/login/oauth"
+                                        href="https://github.com/login/oauth/authorize?client_id=8d5a7b484e8b5802f868&redirect_uri=http://billage.site/login/oauth"
                                     >GitHub 아이디로 로그인</a>
                                 </StyledButton>
                                 <Link to={"/"}>
