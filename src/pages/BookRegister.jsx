@@ -1,5 +1,3 @@
-import Input from "../components/common/Input";
-import Button from "../components/common/Button";
 import {useLocation, useNavigate} from 'react-router-dom';
 import React, {useState} from "react";
 import {postBookRegister} from "../BookApi";
@@ -7,6 +5,7 @@ import {useSelector} from "react-redux";
 import {ContentsBox} from "./ContentsBox";
 import Header from "../components/Header";
 import {SelectButton} from "./BookSearch";
+import Input from "../components/common/Input";
 
 const styles = {
     div: {
@@ -71,7 +70,7 @@ function BookRegister() {
             <ContentsBox>
                 <div style={styles.div}>
                     <div style={styles.divChild}>
-                        <img src={imageUrl} alt={"hi"}/>
+                        <img src={imageUrl} alt={"hi"} width="300rem" height="400rem"/>
                         <p>
                             {title.replace(/<[^>]*>?/g, '')}
                         </p>

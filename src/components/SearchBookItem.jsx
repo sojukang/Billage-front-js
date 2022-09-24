@@ -45,7 +45,7 @@ function SearchBookItem({imageUrl, title}) {
         <>
             <Default>
                 <div style={styles.div}>
-                    <img src={imageUrl} alt={"hi"}/>
+                    <img src={imageUrl} alt={"hi"} width="80rem" height="100rem"/>
                     <p style={styles.title}>
                         <div
                             dangerouslySetInnerHTML={{__html: title}}
