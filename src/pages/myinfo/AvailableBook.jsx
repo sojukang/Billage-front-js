@@ -10,7 +10,7 @@ function AvailableBook({id, title, imageUrl, nickname, location, detailMessage, 
             <Default>
                 <BookContainer>
                     <BookImage>
-                        <img src={imageUrl} alt={"Hi"}/>
+                        <img src={imageUrl} alt={"Hi"} width="80rem" height="100rem"/>
                     </BookImage>
                     <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
                     <BookInfos>책 위치: {location}</BookInfos>
@@ -34,7 +34,7 @@ function AvailableBook({id, title, imageUrl, nickname, location, detailMessage, 
             <Mobile>
                 <MobileBookContainer>
                     <BookImage>
-                        <img src={imageUrl} alt={"Hi"}/>
+                        <img src={imageUrl} alt={"Hi"} width="80rem" height="100rem"/>
                     </BookImage>
                     <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
                     <BookInfos>책 위치: {location}</BookInfos>

@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {getBooksByUser, getLentBooksByUser, getRequestBooksByUser} from "../../BookApi";
+import {getBooksByUser, getLentBooksByUser} from "../../BookApi";
 import styled from "styled-components";
-import LentBookAsOwner, {MyInfoButton} from "./LentBookAsOwner";
+import LentBookAsOwner from "./LentBookAsOwner";
 import PendingBook from "./PendingBook";
 import AvailableBook from "./AvailableBook";
 import Header from "../../components/Header";
-import LentBook from "./LentBook";
 import {Button, withStyles} from "@material-ui/core";
 
 export const CategoryBox = styled.main`
@@ -82,7 +81,6 @@ function MyInfo() {
             console.log(error.response.data.message)
         })
     }
-
 
 
     let availables = [];

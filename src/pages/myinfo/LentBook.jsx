@@ -9,7 +9,7 @@ function LentBook({id, title, nickname, imageUrl, location, detailMessage, lentM
             <Default>
                 <BookContainer>
                     <BookImage>
-                        <img src={imageUrl} alt={"Hi"}/>
+                        <img src={imageUrl} alt={"Hi"} width="80rem" height="100rem"/>
                     </BookImage>
                     <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
                     <BookInfos>주인: {nickname}</BookInfos>
@@ -21,7 +21,7 @@ function LentBook({id, title, nickname, imageUrl, location, detailMessage, lentM
             <Mobile>
                 <MobileBookContainer>
                     <BookImage>
-                        <img src={imageUrl} alt={"Hi"}/>
+                        <img src={imageUrl} alt={"Hi"} width="80rem" height="100rem"/>
                     </BookImage>
                     <BookInfos>{title.replace(/<[^>]*>?/g, '')}</BookInfos>
                     <BookInfos>주인: {nickname}</BookInfos>
